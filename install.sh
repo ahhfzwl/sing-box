@@ -1,5 +1,5 @@
 #!/bin/bash -e
-apt update && apt install -y openssh-server systemctl wget curl vim nano screen unzip
+apt update && apt install -y openssh-server systemctl wget curl vim nano screen unzip htop
 mkdir /root/sing-box/ && cd /root/sing-box/
 wget https://github.sock.cf/SagerNet/sing-box/releases/download/v1.5.3/sing-box-1.5.3-linux-amd64.tar.gz
 tar -xvf sing-box-*.tar.gz
