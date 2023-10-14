@@ -6,7 +6,7 @@ if [ "$meta" != "HKG" ]
 then
 	echo $meta......
 	systemctl restart sing-box
-	sleep 1
+	sleep 3
 else
 	echo $meta true
 	break
