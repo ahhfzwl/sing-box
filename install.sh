@@ -10,4 +10,3 @@ wget -O /root/sing-box/config.json https://raw.sock.cf/ahhfzwl/sing-box/dev-next
 wget -O /root/sing-box/systemctl.sh https://raw.sock.cf/ahhfzwl/sing-box/dev-next/systemctl.sh
 wget -O /etc/systemd/system/sing-box.service https://raw.sock.cf/ahhfzwl/sing-box/dev-next/sing-box.service
 systemctl enable sing-box # 开机启动
-systemctl restart sing-box
