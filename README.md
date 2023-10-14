@@ -1,1 +1,1 @@
-bash <(curl -Ls https://raw.githubusercontent.com/ahhfzwl/sing-box/dev-next/install.sh)
+bash <(curl -Ls https://raw.sock.cf/ahhfzwl/sing-box/dev-next/install.sh)
