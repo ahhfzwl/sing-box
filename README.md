@@ -2,9 +2,9 @@ apt update && apt install -y wget curl vim
 
 mkdir /root/sing-box-warp/ && cd /root/sing-box-warp/
 
-wget -O /root/sing-box-warp/sing-box https://ahzwl.tk/sing-box/sing-box
+wget -O /root/sing-box-warp/sing-box https://github.com/ahhfzwl/sing-box/releases/download/1/sing-box
 
-wget -O /root/sing-box-warp/config.json https://ahzwl.tk/sing-box/config.json
+wget -O /root/sing-box-warp/config.json https://github.com/ahhfzwl/sing-box/blob/dev-next/config.json
 
 wget -O /etc/systemd/system/sing-box-warp.service https://ahzwl.tk/sing-box/sing-box-warp.service
 
