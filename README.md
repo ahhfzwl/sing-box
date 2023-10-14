@@ -13,4 +13,3 @@ chmod +x /root/sing-box-warp/sing-box
 systemctl restart sing-box-warp # 重启服务
 
 systemctl enable sing-box-warp # 开机启动
-
