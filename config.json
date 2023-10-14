@@ -1,0 +1,97 @@
+{
+  "dns": {
+    "servers": [
+      {
+        "tag": "cloudflare",
+        "address": "1.1.1.1",
+        "address_strategy": "prefer_ipv4",
+        "strategy": "ipv4_only",
+        "detour": "wireguard-out"
+      },
+      {
+        "tag":"google",
+        "address":"tls://8.8.4.4",
+        "detour":"direct"
+      },
+      {
+        "tag":"local",
+        "address":"223.5.5.5",
+        "detour":"direct"
+      }
+    ],
+    "rules":[
+      {
+        "domain":"servername.com",
+        "geosite":"cn",
+        "server":"local"
+      }
+    ]
+  },
+  "route":{
+    "geoip":{
+      "download_url":"https://github.sock.cf/SagerNet/sing-geoip/releases/latest/download/geoip.db",
+      "download_detour":"direct"
+    },
+    "geosite":{
+      "download_url":"https://github.sock.cf/SagerNet/sing-geosite/releases/latest/download/geosite.db",
+      "download_detour":"direct"
+    },
+    "rules":[
+      {
+        "geosite":[
+          "openai"
+        ],
+        "outbound":"warp-IPv6-out"
+      },
+      {
+        "geosite":"cn",
+        "geoip":"cn",
+        "outbound":"direct"
+      }
+    ]
+  },
+  "inbounds":[
+    {
+      "type": "mixed",
+      "listen":"::",
+      "listen_port":1080
+    }
+  ],
+  "outbounds":[
+    {
+      "type":"wireguard",
+      "tag":"wireguard-out",
+      "server":"162.159.195.10",
+      "server_port":1701,
+      "local_address":[
+        "172.16.0.2/32",
+        "2606:4700:110:86d1:b28f:bf1c:a64b:4fe0/128"
+      ],
+      "private_key":"UBGks/75gsFDBWlC9pyBV+5RcEFPdfcOx8WhHwNETmg=",
+      "peer_public_key":"bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+      "reserved":[
+        191,
+        212,
+        2
+      ],
+      "mtu":1280
+    },
+    {
+      "type":"direct",
+      "tag":"direct",
+      "domain_strategy":"prefer_ipv4"
+    },
+    {
+      "type":"direct",
+      "tag":"warp-IPv4-out",
+      "detour":"wireguard-out",
+      "domain_strategy":"ipv4_only"
+    },
+    {
+      "type":"direct",
+      "tag":"warp-IPv6-out",
+      "detour":"wireguard-out",
+      "domain_strategy":"ipv6_only"
+    }
+  ]
+}
