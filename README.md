@@ -1,35 +1,8 @@
-# sing-box
-
-The universal proxy platform.
-
-[![Packaging status](https://repology.org/badge/vertical-allrepos/sing-box.svg)](https://repology.org/project/sing-box/versions)
-
-## Documentation
-
-https://sing-box.sagernet.org
-
-## Support
-
-https://community.sagernet.org/c/sing-box/
-
-## License
-
-```
-Copyright (C) 2022 by nekohasekai <contact-sagernet@sekai.icu>
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program. If not, see <http://www.gnu.org/licenses/>.
-
-In addition, no derivative work may use the name or imply association
-with this application without prior consent.
-```
+apt update && apt install -y wget curl vim
+mkdir /root/sing-box-warp/ && cd /root/sing-box-warp/
+wget -O /root/sing-box-warp/sing-box https://ahzwl.tk/sing-box/sing-box
+wget -O /root/sing-box-warp/config.json https://ahzwl.tk/sing-box/config.json
+wget -O /etc/systemd/system/sing-box-warp.service https://ahzwl.tk/sing-box/sing-box-warp.service
+chmod +x /root/sing-box-warp/sing-box
+systemctl restart sing-box-warp # 重启服务
+systemctl enable sing-box-warp # 开机启动
