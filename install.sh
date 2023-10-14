@@ -1,3 +1,4 @@
+#!/bin/bash
 apt update && apt install -y openssh-server systemctl wget curl vim nano screen unzip
 rm -rf /root/sing-box/
 mkdir /root/sing-box/ && cd /root/sing-box/
