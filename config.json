@@ -30,11 +30,11 @@
   "route":{
     "geoip":{
       "download_url":"https://github.sock.cf/SagerNet/sing-geoip/releases/latest/download/geoip.db",
-      "download_detour":"wireguard-out"
+      "download_detour":"direct"
     },
     "geosite":{
       "download_url":"https://github.sock.cf/SagerNet/sing-geosite/releases/latest/download/geosite.db",
-      "download_detour":"wireguard-out"
+      "download_detour":"direct"
     },
     "rules":[
       {
@@ -55,6 +55,27 @@
       "type": "mixed",
       "listen":"::",
       "listen_port":1080
+    },
+    {
+      "type": "vmess",
+      "tag": "vmess-in",
+      "listen": "::",
+      "listen_port": 10808,
+      "users": [
+        {
+          "name": "sekai",
+          "uuid": "11112222-3333-4444-aaaa-bbbbccccdddd",
+          "alterId": 0
+        }
+      ],
+      "tls": {},
+      "transport": {
+        "type": "ws",
+        "path": "/vm",
+        "headers": {},
+        "max_early_data": 0,
+        "early_data_header_name": "Sec-WebSocket-Protocol"
+      }
     }
   ],
   "outbounds":[
