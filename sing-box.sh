@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curl -o /tmp/sing-box.tar.gz https://github.sock.cf/SagerNet/sing-box/releases/download/v1.6.5/sing-box-1.6.5-linux-amd64.tar.gz
+curl -Lo /tmp/sing-box.tar.gz https://github.sock.cf/SagerNet/sing-box/releases/download/v1.6.5/sing-box-1.6.5-linux-amd64.tar.gz
 tar -xvf /tmp/sing-box.tar.gz
 cp /tmp/sing-box-*/sing-box /usr/bin/sing-box
 chmod +x /usr/bin/sing-box
