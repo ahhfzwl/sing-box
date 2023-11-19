@@ -1,10 +1,10 @@
 #!/bin/bash
 
-curl -Lo /tmp/sing-box.tar.gz https://github.sock.cf/SagerNet/sing-box/releases/download/v1.6.5/sing-box-1.6.5-linux-amd64.tar.gz
-tar -xvf /tmp/sing-box.tar.gz
-cp /tmp/sing-box-*/sing-box /usr/bin/sing-box
+curl -LO https://github.sock.cf/SagerNet/sing-box/releases/download/v1.6.5/sing-box-1.6.5-linux-amd64.tar.gz
+tar -xvf ./sing-box-*.tar.gz
+cp ./sing-box-*/sing-box /usr/bin/sing-box
 chmod +x /usr/bin/sing-box
-rm -rf /tmp/sing-box*
+rm -rf ./sing-box-*
 
 mkdir /etc/sing-box/
 cat <<'TEXT' > /etc/sing-box/config.json
