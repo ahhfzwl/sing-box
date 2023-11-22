@@ -1,3 +1,3 @@
-bash <(curl -Ls https://raw.sock.cf/ahhfzwl/sing-box/main/install-server.sh)
+bash <(curl -Ls https://raw.sock.cf/ahhfzwl/sing-box/main/install.sh)
 
 https://fscarmen.cloudflare.now.cc/
