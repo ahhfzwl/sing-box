@@ -7,6 +7,6 @@ WantedBy=multi-user.target
 
 [Service]
 Type=simple
-WorkingDirectory=/root/sing-box/
-ExecStart=/root/sing-box/sing-box run
+WorkingDirectory=/usr/local/bin/
+ExecStart=/usr/local/bin/sing-box run -c /etc/sing-box/config.json
 Restart=always
