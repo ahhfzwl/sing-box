@@ -1,30 +1,11 @@
 {
   "dns": {
     "servers": [
-      {
-        "tag": "cloudflare",
-        "address": "1.1.1.1",
-        "address_strategy": "prefer_ipv4",
-        "strategy": "ipv4_only",
-        "detour": "wireguard-out"
-      },
-      {
-        "tag":"google",
-        "address":"tls://8.8.4.4",
-        "detour":"direct"
-      },
-      {
-        "tag":"local",
-        "address":"223.5.5.5",
-        "detour":"direct"
-      }
+      {"tag":"google","address":"tls://8.8.4.4","detour":"wireguard-out"},
+      {"tag":"local","address":"223.5.5.5","detour":"direct"}
     ],
     "rules":[
-      {
-        "domain":"servername.com",
-        "geosite":"cn",
-        "server":"local"
-      }
+      {"domain":"g.cn","geosite":"cn","server":"local"}
     ]
   },
   "route":{
@@ -49,16 +30,11 @@
     ]
   },
   "inbounds":[
-    {
-      "type": "mixed",
-      "listen":"::",
-      "listen_port":1080
-    },
+    {"type": "mixed","listen":"::","listen_port":1080},
     {
       "type": "vmess",
-      "tag": "vmess-in",
       "listen": "::",
-      "listen_port": 10808,
+      "listen_port": 8080,
       "users": [
         {
           "name": "sekai",
