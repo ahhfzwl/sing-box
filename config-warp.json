@@ -38,9 +38,7 @@
     },
     "rules":[
       {
-        "geosite":[
-          "openai"
-        ],
+        "geosite":["netflix","openai"],
         "outbound":"warp-IPv6-out"
       },
       {
