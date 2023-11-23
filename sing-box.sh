@@ -24,7 +24,7 @@ add() {
   chmod +x /usr/local/bin/sing-box
   rm -rf /tmp/sing-box-*
   
-  mkdir /etc/sing-box/
+  mkdir /etc/sing-box
   cat <<'TEXT' > /etc/sing-box/config.json
   {
     "inbounds":[
