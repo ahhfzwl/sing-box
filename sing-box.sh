@@ -78,17 +78,9 @@ del(){
 }
 
 if [[ -z "$sing-box" ]]; then
-  echo 1.add
-  echo 2.del
-  read -p "璇烽€夋嫨(榛樿1):" sing-box
-fi
-if [[ -z "$sing-box" ]]; then
-  sing-box=1
-fi
-if [[ $sing-box == 1 ]]; then
   apk
   add
 fi
-if [[ $sing-box == 2 ]]; then
+if [[ $sing-box == del ]]; then
   del
 fi
