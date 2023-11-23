@@ -1,5 +1,4 @@
 #!/bin/bash -e
-sing-box=$1
 
 apk(){
   APK=
@@ -77,10 +76,4 @@ del(){
   rm -rf /usr/local/bin/sing-box
 }
 
-if [[ -z "$sing-box" ]]; then
-  apk
-  add
-fi
-if [[ $sing-box == del ]]; then
-  del
-fi
+apk
