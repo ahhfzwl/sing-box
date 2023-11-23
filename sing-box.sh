@@ -75,6 +75,7 @@ del() {
   rm -rf /etc/sing-box
   rm -rf /usr/local/bin/sing-box
 }
+
 if [[ $SING == add ]]; then
   apk
   add
