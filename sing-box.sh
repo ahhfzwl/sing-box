@@ -47,7 +47,7 @@ add() {
     ],
     "outbounds":[{"type":"direct"}]
   }
-  TEXT
+TEXT
   
   cat <<'TEXT' > /etc/systemd/system/sing-box.service
   [Unit]
@@ -62,7 +62,7 @@ add() {
   WorkingDirectory=/usr/local/bin/
   ExecStart=/usr/local/bin/sing-box run -c /etc/sing-box/config.json
   Restart=always
-  TEXT
+TEXT
   
   systemctl enable sing-box
   systemctl restart sing-box
