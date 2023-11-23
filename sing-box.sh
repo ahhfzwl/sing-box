@@ -68,7 +68,7 @@ if [[ -z "$sing-box" ]]; then
   read -p "请选择(默认1):" sing-box
 fi
 if [[ -z "$sing-box" ]]; then
-  config=1
+  sing-box=1
 fi
 if [[ $sing-box == 1 ]]; then
   add
