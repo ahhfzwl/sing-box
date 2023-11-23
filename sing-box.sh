@@ -1,5 +1,4 @@
-#!/usr/bin/bash
-
+#!/bin/bash -e
 sing-box=$1
 
 apk(){
