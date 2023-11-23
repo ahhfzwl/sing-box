@@ -87,6 +87,7 @@ if [[ -z "$sing-box" ]]; then
   sing-box=1
 fi
 if [[ $sing-box == 1 ]]; then
+  apk
   add
 fi
 if [[ $sing-box == 2 ]]; then
