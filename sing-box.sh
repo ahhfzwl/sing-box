@@ -1,7 +1,5 @@
 #!/bin/bash -e
 SING=$1
-PORT=$2
-UUID=$3
 apk() {
   APK=
   for i in systemctl cron curl nano
