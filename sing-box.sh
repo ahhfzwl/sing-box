@@ -62,7 +62,7 @@ del(){
   rm -rf /usr/local/bin/sing-box
 }
 
-if [ -z "$sing-box" ]; then
+if [[ -z "$sing-box" ]]; then
   echo 1.add
   echo 2.del
   read -p "请选择(默认1):" sing-box
