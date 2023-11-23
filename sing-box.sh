@@ -20,7 +20,7 @@ add() {
   VERSION=$(curl https://api.github.com/repos/SagerNet/sing-box/releases | grep -oP "sing-box-\d+\.\d+\.\d+-linux-$CPU"| sort -Vru | head -n 1)
   curl -Lo /tmp/$VERSION.tar.gz https://github.sock.cf/SagerNet/sing-box/releases/latest/download/$VERSION.tar.gz
   tar -xzf /tmp/$VERSION.tar.gz -C /tmp/
-  cp /tmp/sing-box-*/sing-box /usr/local/bin/
+  cp /tmp/sing-box-*/sing-box /usr/local/bin/sing-box
   chmod +x /usr/local/bin/sing-box
   rm -rf /tmp/sing-box-*
   
