@@ -81,6 +81,6 @@ if [[ $SING == add ]]; then
 elif [[ $SING == del ]]; then
   del
 else
-  SING=echo "add del"
+  echo "add del"
 fi
 $SING
