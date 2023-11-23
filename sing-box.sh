@@ -1,5 +1,7 @@
 #!/bin/bash -e
 SING=$1
+PORT=$2
+UUID=$3
 apk() {
   APK=
   for i in systemctl cron curl nano
@@ -31,7 +33,7 @@ add() {
       {
         "type": "vmess",
         "listen": "::",
-        "listen_port": 8080,
+        "listen_port": $PORT,
         "users": [
           {
             "name": "vmess",
@@ -75,6 +77,10 @@ del() {
   rm -rf /etc/sing-box
   rm -rf /usr/local/bin/sing-box
 }
+
+if [ -z "$PORT" ]; then
+		PORT=8080
+fi
 
 if [[ $SING == add ]]; then
   apk
