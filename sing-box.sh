@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-install(){
+add(){
   case "$(uname -m)" in x86_64|amd64|x64)CPU=amd64;;i386|i686)CPU=386;;armv8|arm64|aarch64)CPU=arm64;;armv6l|armv7|armv7l)CPU=armv7;;*)echo "none CPU" && exit;esac
   VERSION=$(curl https://api.github.com/repos/SagerNet/sing-box/releases | grep -oP "sing-box-\d+\.\d+\.\d+-linux-$CPU"| sort -Vru | head -n 1)
   curl -Lo /tmp/$VERSION.tar.gz https://github.sock.cf/SagerNet/sing-box/releases/latest/download/$VERSION.tar.gz
@@ -51,4 +51,11 @@ install(){
   
   systemctl enable sing-box
   systemctl restart sing-box
+}
+del(){
+  systemctl stop sing-box
+  systemctl disable sing-box
+  rm -rf /etc/systemd/system/sing-box.service
+  rm -rf /etc/sing-box
+  rm -rf /usr/local/bin/sing-box
 }
