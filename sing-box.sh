@@ -84,4 +84,3 @@ elif [[ $SING == del ]]; then
 else
   echo "add del"
 fi
-$SING
