@@ -4,7 +4,7 @@ sing-box=$1
 
 apk(){
   APK=
-  for i in wget curl cron nano screen 1111
+  for i in wget curl cron nano screen
   do
     if [ -z `type -P $i` ]; then
       APK="$APK $i"
