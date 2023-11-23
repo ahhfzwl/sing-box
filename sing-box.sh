@@ -11,7 +11,7 @@ apk(){
     fi
   done
   if [ -z $APK ]; then
-    echo "所有依赖都存在，开始安装主程序。"
+    echo true
   else
     apt update && apt -y install $APK
   fi
@@ -81,7 +81,7 @@ del(){
 if [[ -z "$sing-box" ]]; then
   echo 1.add
   echo 2.del
-  read -p "请选择(默认1):" sing-box
+  read -p "璇烽€夋嫨(榛樿1):" sing-box
 fi
 if [[ -z "$sing-box" ]]; then
   sing-box=1
