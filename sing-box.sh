@@ -37,7 +37,7 @@ add() {
         "users": [
           {
             "name": "vmess",
-            "uuid": "11112222-3333-4444-aaaa-bbbbccccdddd"
+            "uuid": "$UUID"
           }
         ],
         "transport": {
@@ -79,7 +79,11 @@ del() {
 }
 
 if [ -z "$PORT" ]; then
-		PORT=8080
+  PORT=8080
+fi
+
+if [ -z "$UUID" ]; then
+  UUID=11112222-3333-4444-aaaa-bbbbccccdddd
 fi
 
 if [[ $SING == add ]]; then
