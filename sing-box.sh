@@ -9,7 +9,7 @@ apk() {
     fi
   done
   if [ -z $APK ]; then
-    echo true
+    echo "APK OK"
   else
     apt update && apt -y install $APK
   fi
