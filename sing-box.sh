@@ -11,11 +11,10 @@ apk(){
     fi
   done
   if [ -z $APK ]; then
-  echo none
+    echo "所有依赖都存在，开始安装主程序。"
   else
-  echo $APK
+    apt update && apt -y install $APK
   fi
-  apt -y install $APK
 }
 
 add(){
