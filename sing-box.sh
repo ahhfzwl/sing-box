@@ -1,5 +1,5 @@
 #!/bin/bash -e
-
+SING=$1
 apk() {
   APK=
   for i in wget curl cron nano screen
@@ -75,5 +75,12 @@ del() {
   rm -rf /etc/sing-box
   rm -rf /usr/local/bin/sing-box
 }
-
-apk
+if [[ $SING == add ]]; then
+  apk
+  add
+elif [[ $SING == del ]]; then
+  del
+else
+  SING = echo "add del"
+fi
+$SING
