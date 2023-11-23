@@ -10,13 +10,11 @@ apk(){
       APK="$APK $i"
     fi
   done
-  
   if [ -z $APK ]; then
   echo none
   else
   echo $APK
   fi
-  
   apt -y install $APK
 }
 
@@ -72,6 +70,7 @@ add(){
   systemctl enable sing-box
   systemctl restart sing-box
 }
+
 del(){
   systemctl stop sing-box
   systemctl disable sing-box
