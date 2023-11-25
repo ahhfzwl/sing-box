@@ -28,20 +28,11 @@ cat <<'TEXT' > /etc/sing-box/config.json
 {
   "inbounds":[
     {
-      "type": "vmess",
-      "listen": "::",
-      "listen_port": 8080,
-      "users": [
-        {
-          "name": "vmess",
-          "uuid": "11112222-3333-4444-aaaa-bbbbccccdddd"
-        }
-      ],
-      "transport": {
-        "type": "ws",
-        "path": "/vm",
-        "early_data_header_name": "Sec-WebSocket-Protocol"
-      }
+      "type":"vmess",
+      "listen":"::",
+      "listen_port":20602,
+      "users":[{"uuid":"11112222-3333-4444-aaaa-bbbbccccdddd"}],
+      "transport":{"type":"ws","path":"/vm","early_data_header_name":"Sec-WebSocket-Protocol"}
     }
   ],
   "outbounds":[{"type":"direct"}]
