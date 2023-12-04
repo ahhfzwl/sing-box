@@ -30,7 +30,7 @@ cat <<'TEXT' > /etc/sing-box/config.json
     {
       "type":"vmess",
       "listen":"::",
-      "listen_port":20602,
+      "listen_port":8080,
       "users":[{"uuid":"11112222-3333-4444-aaaa-bbbbccccdddd"}],
       "transport":{"type":"ws","path":"/vm","early_data_header_name":"Sec-WebSocket-Protocol"}
     }
