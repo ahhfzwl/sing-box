@@ -1,30 +1,44 @@
 {
   "inbounds":[
-    {"type": "mixed","listen":"::","listen_port":1080},
     {
-      "type": "vmess",
-      "listen": "::",
-      "listen_port": 8080,
-      "users": [
+      "type": "mixed",
+      "listen":"::",
+      "listen_port":1080
+    },
+    {
+      "type":"vmess",
+      "listen":"::",
+      "listen_port":8080,
+      "sniff": true,
+      "tcp_fast_open": true,
+      "users":[
         {
-          "uuid": "11112222-3333-4444-aaaa-bbbbccccdddd"
+          "uuid":"11112222-3333-4444-aaaa-bbbbccccdddd"
         }
       ],
-      "transport": {
-        "type": "ws",
-        "path": "/vm",
-        "early_data_header_name": "Sec-WebSocket-Protocol"
+      "transport":{
+        "type":"ws",
+        "path":"/vm",
+        "early_data_header_name":"Sec-WebSocket-Protocol"
       }
     },
     {
       "type": "vmess",
       "listen": "::",
       "listen_port": 8443,
+      "sniff": true,
+      "tcp_fast_open": true,
       "users": [
         {
           "uuid": "11112222-3333-4444-aaaa-bbbbccccdddd"
         }
       ],
+      "tls": {
+        "enabled": true,
+        "server_name": "kr.sock.cf",
+        "certificate_path": "/etc/sing-box/sock.cf.car",
+        "key_path": "/etc/sing-box/sock.cf.key"
+      },
       "transport": {
         "type": "ws",
         "path": "/vm",
@@ -32,5 +46,9 @@
       }
     }
   ],
-  "outbounds":[{"type":"direct"}]
+  "outbounds":[
+    {
+      "type":"direct"
+    }
+  ]
 }
