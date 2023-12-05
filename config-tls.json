@@ -1,5 +1,6 @@
 {
   "inbounds":[
+    {"type": "mixed","listen":"::","listen_port":1080},
     {
       "type": "vmess",
       "listen": "::",
