@@ -1,20 +1,24 @@
 {
   "inbounds":[
     {
-      "type": "vmess",
-      "listen": "::",
-      "listen_port": 8080,
-      "users": [
+      "type":"vmess",
+      "listen":"::",
+      "listen_port":8080,
+      "users":[
         {
-          "uuid": "11112222-3333-4444-aaaa-bbbbccccdddd"
+          "uuid":"11112222-3333-4444-aaaa-bbbbccccdddd"
         }
       ],
-      "transport": {
-        "type": "ws",
-        "path": "/vm",
-        "early_data_header_name": "Sec-WebSocket-Protocol"
+      "transport":{
+        "type":"ws",
+        "path":"/vm",
+        "early_data_header_name":"Sec-WebSocket-Protocol"
       }
     }
   ],
-  "outbounds":[{"type":"direct"}]
+  "outbounds":[
+    {
+      "type":"direct"
+    }
+  ]
 }
