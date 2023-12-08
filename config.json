@@ -3,7 +3,7 @@
     {
       "type":"vmess",
       "listen":"::",
-      "listen_port":8080,
+      "listen_port":30501,
       "users":[
         {
           "uuid":"11112222-3333-4444-aaaa-bbbbccccdddd"
@@ -18,8 +18,8 @@
         "enabled":true,
         "brutal":{
           "enabled":true,
-          "up_mbps":100,
-          "down_mbps":100
+          "up_mbps":1000,
+          "down_mbps":1000
         }
       }
     }
