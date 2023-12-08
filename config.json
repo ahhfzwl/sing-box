@@ -13,6 +13,15 @@
         "type":"ws",
         "path":"/vm",
         "early_data_header_name":"Sec-WebSocket-Protocol"
+      },
+      "multiplex":{
+        "enabled":true,
+        "padding":false,
+        "brutal":{
+          "enabled":true,
+          "up_mbps":100,
+          "down_mbps":100
+        }  
       }
     }
   ],
