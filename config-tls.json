@@ -4,60 +4,19 @@
       "type":"vmess",
       "listen":"::",
       "listen_port":8080,
-      "users":[
-        {
-          "uuid":"11112222-3333-4444-aaaa-bbbbccccdddd"
-        }
-      ],
-      "multiplex":{
-        "enabled":true,
-        "padding":false,
-        "brutal":{
-          "enabled":true,
-          "up_mbps":100,
-          "down_mbps":100
-        }  
-      },
-      "transport":{
-        "type":"ws",
-        "path":"/vm",
-        "early_data_header_name":"Sec-WebSocket-Protocol"
-      }
+      "users":[{"uuid":"11112222-3333-4444-aaaa-bbbbccccdddd"}],
+      "transport":{"type":"ws","path":"/vm","early_data_header_name":"Sec-WebSocket-Protocol"},
+      "multiplex":{"enabled":true,"padding":false,"brutal":{"enabled":true,"up_mbps":100,"down_mbps":100}}
     },
     {
       "type":"vmess",
       "listen":"::",
       "listen_port":8443,
-      "users":[
-        {
-          "uuid":"11112222-3333-4444-aaaa-bbbbccccdddd"
-        }
-      ],
-      "multiplex":{
-        "enabled":true,
-        "padding":false,
-        "brutal":{
-          "enabled":true,
-          "up_mbps":100,
-          "down_mbps":100
-        }
-      },
-      "tls":{
-        "enabled":true,
-        "server_name":"kr.sock.cf",
-        "certificate_path":"/etc/sing-box/sock.cf.car",
-        "key_path":"/etc/sing-box/sock.cf.key"
-      },
-      "transport":{
-        "type":"ws",
-        "path":"/vm",
-        "early_data_header_name":"Sec-WebSocket-Protocol"
-      }
+      "users":[{"uuid":"11112222-3333-4444-aaaa-bbbbccccdddd"}],
+      "transport":{"type":"ws","path":"/vm","early_data_header_name":"Sec-WebSocket-Protocol"},
+      "multiplex":{"enabled":true,"padding":false,"brutal":{"enabled":true,"up_mbps":100,"down_mbps":100}},
+      "tls":{"enabled":true,"server_name":"kr.sock.cf","certificate_path":"/etc/sing-box/sock.cf.car","key_path":"/etc/sing-box/sock.cf.key"}
     }
   ],
-  "outbounds":[
-    {
-      "type":"direct"
-    }
-  ]
+  "outbounds":[{"type":"direct"}]
 }
