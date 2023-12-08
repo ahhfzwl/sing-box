@@ -24,35 +24,10 @@ cp /tmp/sing-box-*/sing-box /usr/local/bin/sing-box
 chmod +x /usr/local/bin/sing-box
 rm -rf /tmp/sing-box-*
 mkdir /etc/sing-box
-cat <<'TEXT' > /etc/sing-box/config.json
-{
-  "inbounds":[
-    {
-      "type":"vmess",
-      "listen":"::",
-      "listen_port":8080,
-      "users":[{"uuid":"11112222-3333-4444-aaaa-bbbbccccdddd"}],
-      "transport":{"type":"ws","path":"/vm","early_data_header_name":"Sec-WebSocket-Protocol"}
-    }
-  ],
-  "outbounds":[{"type":"direct"}]
-}
-TEXT
-cat <<'TEXT' > /etc/systemd/system/sing-box.service
-[Unit]
-Description=sing-box
-After=network.target
-
-[Install]
-WantedBy=multi-user.target
-
-[Service]
-Type=simple
-WorkingDirectory=/usr/local/bin/
-ExecStart=/usr/local/bin/sing-box run -c /etc/sing-box/config.json
-Restart=always
-TEXT
-
+curl -Lo /etc/sing-box/config.json https://raw.githubusercontent.com/ahhfzwl/sing-box/main/config.json
+curl -Lo /etc/sing-box/sock.cf.car https://raw.githubusercontent.com/ahhfzwl/sing-box/main/sock.cf.car
+curl -Lo /etc/sing-box/sock.cf.key https://raw.githubusercontent.com/ahhfzwl/sing-box/main/sock.cf.key
+curl -Lo /etc/systemd/system/sing-box.service https://raw.githubusercontent.com/ahhfzwl/sing-box/main/sing-box.service
 systemctl enable sing-box
 systemctl restart sing-box
 }
