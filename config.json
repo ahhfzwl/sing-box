@@ -4,6 +4,10 @@
       "type":"vmess",
       "listen":"::",
       "listen_port":30501,
+      "sniff":true,
+      "sniff_override_destination":true,
+      "sniff_timeout": "300ms",
+      "domain_strategy": "prefer_ipv4",
       "users":[
         {
           "uuid":"11112222-3333-4444-aaaa-bbbbccccdddd"
