@@ -1,0 +1,11 @@
+{
+  "type":"wireguard",
+  "server":"engage.cloudflareclient.com",
+  "server_port":2408,
+  "local_address":["172.16.0.2/32","2606:4700:110:8f5c:875b:9134:2381:ab7e/128"],
+  "private_key":"mP2aqxk/sqcVy0QxEqgHqcQild16CbLRAnNDflikimk=",
+  "peer_public_key":"bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+  "reserved":[184,170,144],
+  "mtu":1280,
+  "commit":"type free device e60362f0-ef33-42bc-ab33-e8555336da7a token 79b27938-9837-4b4a-85fe-b28c655a5743"
+}
