@@ -25,7 +25,7 @@ chmod +x /usr/local/bin/sing-box
 rm -rf /tmp/sing-box-*
 mkdir /etc/sing-box
 curl -Lo /etc/sing-box/config.json https://raw.githubusercontent.com/ahhfzwl/sing-box/main/config.json
-curl -Lo /etc/sing-box/sock.cf.car https://raw.githubusercontent.com/ahhfzwl/sing-box/main/sock.cf.car
+curl -Lo /etc/sing-box/sock.cf.car https://raw.githubusercontent.com/ahhfzwl/sing-box/main/sock.cf.cer
 curl -Lo /etc/sing-box/sock.cf.key https://raw.githubusercontent.com/ahhfzwl/sing-box/main/sock.cf.key
 curl -Lo /etc/systemd/system/sing-box.service https://raw.githubusercontent.com/ahhfzwl/sing-box/main/sing-box.service
 systemctl enable sing-box
