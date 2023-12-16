@@ -14,7 +14,7 @@ case "$1" in
         meta=`curl -x socks5://127.0.0.1:1080 -s https://speed.cloudflare.com/meta -m 5 | awk -F\" '{print $22}'`
         echo "$(date) $meta"
         if [[ "$meta" != "$colo" ]]; then
-          killall sing-box
+          pkill sing-box
           sleep 1
         else
           break
