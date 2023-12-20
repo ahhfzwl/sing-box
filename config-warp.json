@@ -1,7 +1,7 @@
 {
   "dns": {
     "servers": [
-      {"tag":"google","address":"tls://8.8.4.4","detour":"wireguard-out"},
+      {"tag":"google","address":"tls://8.8.4.4","detour":"wireguard"},
       {"tag":"local","address":"223.5.5.5","detour":"direct"}
     ],
     "rules":[
@@ -32,25 +32,37 @@
   "inbounds":[
     {"type": "mixed","listen":"::","listen_port":1080},
     {
-      "type": "vmess",
-      "listen": "::",
-      "listen_port": 8080,
-      "users": [
+      "type":"vmess",
+      "listen":"::",
+      "listen_port":8080,
+      "sniff":true,
+      "sniff_override_destination":true,
+      "sniff_timeout": "300ms",
+      "domain_strategy": "prefer_ipv4",
+      "users":[
         {
-          "uuid": "11112222-3333-4444-aaaa-bbbbccccdddd"
+          "uuid":"11112222-3333-4444-aaaa-bbbbccccdddd"
         }
       ],
-      "transport": {
-        "type": "ws",
-        "path": "/vm",
-        "early_data_header_name": "Sec-WebSocket-Protocol"
+      "transport":{
+        "type":"ws",
+        "path":"/vm",
+        "early_data_header_name":"Sec-WebSocket-Protocol"
+      },
+      "multiplex":{
+        "enabled":true,
+        "brutal":{
+          "enabled":true,
+          "up_mbps":1000,
+          "down_mbps":1000
+        }
       }
     }
   ],
   "outbounds":[
     {
       "type":"wireguard",
-      "tag":"wireguard-out",
+      "tag":"wireguard",
       "server":"162.159.195.10",
       "server_port":1701,
       "local_address":["172.16.0.2/32","2606:4700:110:86d1:b28f:bf1c:a64b:4fe0/128"],
@@ -66,14 +78,14 @@
     },
     {
       "type":"direct",
-      "tag":"warp-IPv4-out",
-      "detour":"wireguard-out",
+      "tag":"warp-IPv4",
+      "detour":"wireguard",
       "domain_strategy":"ipv4_only"
     },
     {
       "type":"direct",
-      "tag":"warp-IPv6-out",
-      "detour":"wireguard-out",
+      "tag":"warp-IPv6",
+      "detour":"wireguard",
       "domain_strategy":"ipv6_only"
     }
   ]
