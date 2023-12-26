@@ -1,11 +1,23 @@
 {
   "dns": {
     "servers": [
-      {"tag":"google","address":"tls://8.8.4.4","detour":"wireguard"},
-      {"tag":"local","address":"223.5.5.5","detour":"direct"}
+      {
+        "tag":"google",
+        "address":"https://1.0.0.1/dns-query",
+        "detour":"wireguard"
+      },
+      {
+        "tag":"local",
+        "address":"tls://8.8.4.4",
+        "detour":"direct"
+      }
     ],
     "rules":[
-      {"domain":"g.cn","geosite":"cn","server":"local"}
+      {
+        "domain":"g.cn",
+        "geosite":"cn",
+        "server":"local"
+      }
     ]
   },
   "route":{
@@ -19,7 +31,10 @@
     },
     "rules":[
       {
-        "geosite":["netflix","openai"],
+        "geosite":[
+          "netflix",
+          "openai"
+        ],
         "outbound":"warp-IPv6-out"
       },
       {
@@ -30,7 +45,11 @@
     ]
   },
   "inbounds":[
-    {"type": "mixed","listen":"::","listen_port":1080},
+    {
+      "type": "mixed",
+      "listen":"::",
+      "listen_port":1080
+    },
     {
       "type":"vmess",
       "listen":"::",
