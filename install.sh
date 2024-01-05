@@ -42,25 +42,8 @@ del() {
   rm -rf /etc/init.d/sing-box
 }
 
-if [[ $SING == add ]]; then
-  apk
-  add
-elif [[ $SING == del ]]; then
-  del
-else
-  echo "add or del"
-fi
-
 case $SING in
-  add)
-    apk
-    add
-  ;;
-  del)
-    del
-  ;;
-  *)
-    echo "add or del"
-    exit
-  ;
+  add) apk && add;;
+  del) del;;
+  *) echo "add or del" && exit;
 esac
