@@ -2,7 +2,7 @@
 SING=$1
 apk() {
   APK=
-  for i in systemctl wget curl
+  for i in systemctl htop nano wget curl
   do
     if [ -z `type -P $i` ]; then
       APK="$APK $i"
