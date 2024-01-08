@@ -34,16 +34,30 @@ add() {
 }
 
 del() {
+  echo "disable sing-box"
   systemctl disable sing-box
+  echo "stop sing-box"
   systemctl stop sing-box
+  echo "/etc/systemd/system/sing-box.service"
   rm -rf /etc/systemd/system/sing-box.service
+  echo "/etc/sing-box"
   rm -rf /etc/sing-box
+  echo "/usr/local/bin/sing-box"
   rm -rf /usr/local/bin/sing-box
+  echo "/etc/init.d/sing-box"
   rm -rf /etc/init.d/sing-box
 }
 
 case $SING in
-  add) apk && add;;
-  del) del;;
-  *) echo "add or del" && exit;
+  add)
+    apk
+    add
+  ;;
+  del)
+    del
+  ;;
+  *)
+    echo "add or del"
+    exit
+  ;
 esac
