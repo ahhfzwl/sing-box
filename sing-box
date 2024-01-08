@@ -8,10 +8,10 @@ case "$1" in
   ;;
   stop)
     echo "Stopping . . . . . ."
-    pkill sing-box
+    kill -9 $(pidof /usr/local/bin/sing-box)
   ;;
   restart)
-    pkill sing-box
+    kill -9 $(pidof /usr/local/bin/sing-box)
     sleep 1
     setsid /usr/local/bin/sing-box run -c /etc/sing-box/config.json > /dev/null 2>&1 &
     sleep 1
@@ -29,7 +29,7 @@ case "$1" in
       echo "$(date) $meta"
       if [[ "$meta" != "HKG" ]]
       then
-        pkill sing-box
+        kill -9 $(pidof /usr/local/bin/sing-box)
         sleep 1
         setsid /usr/local/bin/sing-box run -c /etc/sing-box/config.json > /dev/null 2>&1 &
         sleep 3
