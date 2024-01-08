@@ -36,6 +36,7 @@ add() {
   cp /tmp/sing-box-*/sing-box /usr/local/bin/sing-box
   chmod +x /usr/local/bin/sing-box
   rm -rf /tmp/sing-box-*
+  systemctl daemon-reload
   systemctl restart sing-box
   systemctl enable sing-box
 }
