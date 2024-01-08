@@ -24,11 +24,11 @@ add() {
   chmod +x /usr/local/bin/sing-box
   rm -rf /tmp/sing-box-*
   mkdir /etc/sing-box
-  curl -Lo /etc/sing-box/config.json https://raw.githubusercontent.com/ahhfzwl/sing-box/main/config.json
-  curl -Lo /etc/sing-box/sock.cf.car https://raw.githubusercontent.com/ahhfzwl/sing-box/main/sock.cf.cer
-  curl -Lo /etc/sing-box/sock.cf.key https://raw.githubusercontent.com/ahhfzwl/sing-box/main/sock.cf.key
-  curl -Lo /etc/systemd/system/sing-box.service https://raw.githubusercontent.com/ahhfzwl/sing-box/main/sing-box.service
-  curl -Lo /etc/init.d/sing-box https://raw.githubusercontent.com/ahhfzwl/sing-box/main/sing-box
+  curl -Lo /etc/sing-box/config.json https://raw.sock.cf/ahhfzwl/sing-box/main/config.json
+  curl -Lo /etc/sing-box/sock.cf.car https://raw.sock.cf/ahhfzwl/sing-box/main/sock.cf.cer
+  curl -Lo /etc/sing-box/sock.cf.key https://raw.sock.cf/ahhfzwl/sing-box/main/sock.cf.key
+  curl -Lo /etc/systemd/system/sing-box.service https://raw.sock.cf/ahhfzwl/sing-box/main/sing-box.service
+  curl -Lo /etc/init.d/sing-box https://raw.sock.cf/ahhfzwl/sing-box/main/sing-box
   systemctl restart sing-box
   systemctl enable sing-box
 }
