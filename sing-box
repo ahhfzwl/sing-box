@@ -7,7 +7,6 @@ case "$1" in
     echo "$(date) $(curl -x socks5://127.0.0.1:1080 -s https://speed.cloudflare.com/meta -m 5 | awk -F\" '{print $22}')"
   ;;
   stop)
-    echo "Stopping . . . . . ."
     kill -9 $(pidof /usr/local/bin/sing-box)
   ;;
   restart)
@@ -21,7 +20,6 @@ case "$1" in
     echo "$(date) $(curl -x socks5://127.0.0.1:1080 -s https://speed.cloudflare.com/meta -m 5 | awk -F\" '{print $22}')"
   ;;
   HKG)
-    echo "Starting . . . . . ."
     i=1
     while [ $i -le 9 ]
     do
