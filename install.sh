@@ -59,5 +59,5 @@ case $SING in
   *)
     echo "add or del"
     exit
-  ;
+  ;;
 esac
