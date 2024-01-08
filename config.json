@@ -14,5 +14,9 @@
       "multiplex":{"enabled":true,"brutal":{"enabled":true,"up_mbps":100,"down_mbps":20}}
     }
   ],
-  "outbounds":[{"type":"direct"}]
+  "outbounds":[
+    {
+      "type":"direct"
+    }
+  ]
 }
