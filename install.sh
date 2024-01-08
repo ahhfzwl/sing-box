@@ -18,15 +18,15 @@ apk() {
 add() {
   mkdir /etc/sing-box
   echo "download /etc/sing-box/config.json"
-  curl -Lo /etc/sing-box/config.json https://raw.sock.cf/ahhfzwl/sing-box/main/config.json
+  curl -Lso /etc/sing-box/config.json https://raw.sock.cf/ahhfzwl/sing-box/main/config.json
   echo "download /etc/sing-box/sock.cf.car"
-  curl -Lo /etc/sing-box/sock.cf.car https://raw.sock.cf/ahhfzwl/sing-box/main/sock.cf.cer
+  curl -Lso /etc/sing-box/sock.cf.car https://raw.sock.cf/ahhfzwl/sing-box/main/sock.cf.cer
   echo "download /etc/sing-box/sock.cf.key"
-  curl -Lo /etc/sing-box/sock.cf.key https://raw.sock.cf/ahhfzwl/sing-box/main/sock.cf.key
+  curl -Lso /etc/sing-box/sock.cf.key https://raw.sock.cf/ahhfzwl/sing-box/main/sock.cf.key
   echo "download /etc/systemd/system/sing-box.service"
-  curl -Lo /etc/systemd/system/sing-box.service https://raw.sock.cf/ahhfzwl/sing-box/main/sing-box.service
+  curl -Lso /etc/systemd/system/sing-box.service https://raw.sock.cf/ahhfzwl/sing-box/main/sing-box.service
   echo "download /etc/init.d/sing-box"
-  curl -Lo /etc/init.d/sing-box https://raw.sock.cf/ahhfzwl/sing-box/main/sing-box
+  curl -Lso /etc/init.d/sing-box https://raw.sock.cf/ahhfzwl/sing-box/main/sing-box
   case `uname -m` in x86_64|amd64|x64)CPU=amd64;;i386|i686)CPU=386;;armv8|arm64|aarch64)CPU=arm64;;armv6l|armv7|armv7l)CPU=armv7;;*)echo CPU???;exit;esac
   VER=$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases | grep -oP "sing-box-\d+\.\d+\.\d+-linux-$CPU"| sort -Vru | head -n 1)
   echo "download $VER.tar.gz"
