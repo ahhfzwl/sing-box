@@ -18,7 +18,7 @@ case "$1" in
     echo `curl -x socks5://127.0.0.1:1080 -s https://speed.cloudflare.com/meta -m 5 | awk -F\" '{print $22}'`
   ;;
   status)
-    echo "`date` `curl -x socks5://127.0.0.1:1080 -s https://speed.cloudflare.com/meta -m 5 | awk -F\" '{print $22}'"`
+    echo "`date` `curl -x socks5://127.0.0.1:1080 -s https://speed.cloudflare.com/meta -m 5 | awk -F\" '{print $22}'`"
   ;;
   HKG)
     echo "Starting . . . . . ."
