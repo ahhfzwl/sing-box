@@ -3,13 +3,19 @@
 case "$1" in
   start)
     setsid /usr/local/bin/sing-box run -c /etc/sing-box/config.json > /dev/null 2>&1 &
+    sleep 1
+    echo `curl -x socks5://127.0.0.1:1080 -s https://speed.cloudflare.com/meta -m 5 | awk -F\" '{print $22}'`
   ;;
   stop)
+    echo "Stopping . . . . . ."
     pkill sing-box
   ;;
   restart)
     pkill sing-box
+    sleep 1
     setsid /usr/local/bin/sing-box run -c /etc/sing-box/config.json > /dev/null 2>&1 &
+    sleep 1
+    echo `curl -x socks5://127.0.0.1:1080 -s https://speed.cloudflare.com/meta -m 5 | awk -F\" '{print $22}'`
   ;;
   status)
     meta=`curl -x socks5://127.0.0.1:1080 -s https://speed.cloudflare.com/meta -m 5 | awk -F\" '{print $22}'`
