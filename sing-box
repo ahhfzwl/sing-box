@@ -1,6 +1,5 @@
 #!/bin/sh
 
-colo=$2
 case "$1" in
   start)
     echo "Starting . . . . . ."
@@ -14,15 +13,17 @@ case "$1" in
     meta=`curl -x socks5://127.0.0.1:1080 -s https://speed.cloudflare.com/meta -m 5 | awk -F\" '{print $22}'`
     echo "$(date) $meta"
   ;;
-  HK)
+  HKG)
     echo "Starting . . . . . ."
     i=1
-    while [ $i -le 9 ]; do
+    while [ $i -le 9 ]
+    do
       setsid /usr/bin/sing-box -c /etc/sing-box/config.json > /dev/null 2>&1 &
       sleep 3
       meta=`curl -x socks5://127.0.0.1:1080 -s https://speed.cloudflare.com/meta -m 5 | awk -F\" '{print $22}'`
       echo "$(date) $meta"
-      if [[ "$meta" != "HK" ]]; then
+      if [[ "$meta" != "HKG" ]]
+      then
         pkill sing-box
         sleep 1
       else
