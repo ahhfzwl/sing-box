@@ -17,7 +17,7 @@ apk() {
 
 add() {
   case `uname -m` in x86_64|amd64|x64)CPU=amd64;;i386|i686)CPU=386;;armv8|arm64|aarch64)CPU=arm64;;armv6l|armv7|armv7l)CPU=armv7;;*)echo CPU???;exit;esac
-  VER=$(curl https://api.github.com/repos/SagerNet/sing-box/releases | grep -oP "sing-box-\d+\.\d+\.\d+-linux-$CPU"| sort -Vru | head -n 1)
+  VER=$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases | grep -oP "sing-box-\d+\.\d+\.\d+-linux-$CPU"| sort -Vru | head -n 1)
   echo "download $VER.tar.gz"
   curl -Lo /tmp/$VER.tar.gz https://github.sock.cf/SagerNet/sing-box/releases/latest/download/$VER.tar.gz
   tar -xzf /tmp/$VER.tar.gz -C /tmp/
