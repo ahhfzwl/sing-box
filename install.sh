@@ -27,6 +27,7 @@ add() {
   curl -Lso /etc/systemd/system/sing-box.service https://raw.sock.cf/ahhfzwl/sing-box/main/sing-box.service
   echo "download /etc/init.d/sing-box"
   curl -Lso /etc/init.d/sing-box https://raw.sock.cf/ahhfzwl/sing-box/main/sing-box
+  chmod +x /etc/init.d/sing-box
   case `uname -m` in x86_64|amd64|x64)CPU=amd64;;i386|i686)CPU=386;;armv8|arm64|aarch64)CPU=arm64;;armv6l|armv7|armv7l)CPU=armv7;;*)echo CPU???;exit;esac
   VER=$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases | grep -oP "sing-box-\d+\.\d+\.\d+-linux-$CPU"| sort -Vru | head -n 1)
   echo "download $VER.tar.gz"
