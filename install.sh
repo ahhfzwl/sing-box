@@ -45,6 +45,7 @@ del() {
   echo "disable sing-box"
   systemctl disable sing-box
   echo "stop sing-box"
+  pkill sing-box
   systemctl stop sing-box
   echo "del /etc/systemd/system/sing-box.service"
   rm -rf /etc/systemd/system/sing-box.service
