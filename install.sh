@@ -1,5 +1,6 @@
 #!/bin/bash
 SING=$1
+CONFIG=config.json
 apk() {
   APK=
   for i in systemctl htop nano wget curl
@@ -18,7 +19,7 @@ apk() {
 add() {
   mkdir /etc/sing-box
   echo "download /etc/sing-box/config.json"
-  curl -Lso /etc/sing-box/config.json https://raw.sock.cf/ahhfzwl/sing-box/main/config.json
+  curl -Lso /etc/sing-box/config.json https://raw.sock.cf/ahhfzwl/sing-box/main/$CONFIG
   echo "download /etc/sing-box/sock.cf.car"
   curl -Lso /etc/sing-box/sock.cf.car https://raw.sock.cf/ahhfzwl/sing-box/main/sock.cf.cer
   echo "download /etc/sing-box/sock.cf.key"
@@ -64,6 +65,11 @@ case $SING in
   ;;
   del)
     del
+  ;;
+  warp)
+    CONFIG=config-warp.json
+    apk
+    add
   ;;
   *)
     echo "add or del"
