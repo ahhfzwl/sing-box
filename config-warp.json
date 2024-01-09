@@ -8,7 +8,7 @@
       },
       {
         "tag":"local",
-        "address":"tls://8.8.4.4",
+        "address":"223.5.5.5",
         "detour":"direct"
       }
     ],
@@ -23,11 +23,11 @@
   "route":{
     "geoip":{
       "download_url":"https://github.sock.cf/SagerNet/sing-geoip/releases/latest/download/geoip.db",
-      "download_detour":"direct"
+      "download_detour":"wireguard"
     },
     "geosite":{
       "download_url":"https://github.sock.cf/SagerNet/sing-geosite/releases/latest/download/geosite.db",
-      "download_detour":"direct"
+      "download_detour":"wireguard"
     },
     "rules":[
       {
@@ -35,7 +35,7 @@
           "netflix",
           "openai"
         ],
-        "outbound":"warp-IPv6-out"
+        "outbound":"warp-IPv6"
       },
       {
         "geosite":"cn",
