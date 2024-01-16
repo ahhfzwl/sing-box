@@ -1,0 +1,56 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:          sing-box
+# Required-Start:    $all
+# Required-Stop:     
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: 启动时启动 sing-box
+# Description:       启用 sing-box 提供的服务。
+### END INIT INFO
+
+case "$1" in
+  start)
+    systemctl start sing-box
+  ;;
+  stop)
+    systemctl stop sing-box
+  ;;
+  restart)
+    systemctl restart sing-box
+  ;;
+  status)
+    echo "$(date) $(curl -x socks5://127.0.0.1:1080 -s https://speed.cloudflare.com/meta -m 5 | awk -F\" '{print $22}')"
+  ;;
+  HKG)
+    for i in {1..10}; do
+      meta=$(curl -x socks5://127.0.0.1:1080 -s https://speed.cloudflare.com/meta -m 5 | awk -F\" '{print $22}')
+      echo "$(date) $meta"
+      if [[ "$meta" != "$1" ]]
+      then
+        systemctl restart sing-box
+        sleep 2
+      else
+        break
+      fi
+    done
+  ;;
+  SJC)
+    for i in {1..10}; do
+      meta=$(curl -x socks5://127.0.0.1:1080 -s https://speed.cloudflare.com/meta -m 5 | awk -F\" '{print $22}')
+      echo "$(date) $meta"
+      if [[ "$meta" != "$1" ]]
+      then
+        systemctl restart sing-box
+        sleep 2
+      else
+        break
+      fi
+    done
+  ;;
+  *)
+    echo "Usage: /etc/init.d/sing-box {start|stop}"
+    exit 1
+  ;;
+esac
+exit 0
