@@ -10,7 +10,7 @@ bash <(curl -Ls https://raw.sock.cf/ahhfzwl/sing-box/main/install.sh) del
 
 改端口：
 
-sed -i '11s/8080/52800/' /etc/sing-box/config.json && systemctl restart sing-box
+sed -i '11s/8080/30501/' /etc/sing-box/config.json && systemctl restart sing-box
 
 
 WARP账户：
