@@ -1,24 +1,24 @@
-安装：
-
-bash <(curl -Ls https://raw.sock.cf/ahhfzwl/sing-box/main/sing-box.sh) add
-
-
-修改端口：
-
-sed -i '6s/8080/30501/' /etc/sing-box/config.json && systemctl restart sing-box
-
-
-卸载：
+# 卸载：
 
 bash <(curl -Ls https://raw.sock.cf/ahhfzwl/sing-box/main/sing-box.sh) del
 
 
-WARP账户：
+# 安装：
+
+bash <(curl -Ls https://raw.sock.cf/ahhfzwl/sing-box/main/sing-box.sh) add
+
+
+# 修改端口：
+
+sed -i '6s/8080/30501/' /etc/sing-box/config.json && systemctl restart sing-box
+
+
+# WARP账户：
 
 https://fscarmen.cloudflare.now.cc/
 
 
-下载sing-box最新版：
+# 下载sing-box最新版：
 
 mkdir /etc/sing-box && curl -o /etc/sing-box/config.json https://raw.sock.cf/ahhfzwl/sing-box/main/config.json
 
