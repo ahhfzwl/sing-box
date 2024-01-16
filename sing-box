@@ -1,4 +1,13 @@
 #!/bin/bash
+### BEGIN INIT INFO
+# Provides:          sing-box
+# Required-Start:    $all
+# Required-Stop:     
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: 启动时启动 sing-box
+# Description:       启用 sing-box 提供的服务。
+### END INIT INFO
 
 case "$1" in
   start)
