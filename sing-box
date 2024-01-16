@@ -22,35 +22,18 @@ case "$1" in
   status)
     echo "$(date) $(curl -x socks5://127.0.0.1:1080 -s https://speed.cloudflare.com/meta -m 5 | awk -F\" '{print $22}')"
   ;;
-  HKG)
-    for i in {1..10}; do
-      meta=$(curl -x socks5://127.0.0.1:1080 -s https://speed.cloudflare.com/meta -m 5 | awk -F\" '{print $22}')
-      echo "$(date) $meta"
-      if [[ "$meta" != "$1" ]]
-      then
-        systemctl restart sing-box
-        sleep 2
-      else
-        break
-      fi
-    done
-  ;;
-  SJC)
-    for i in {1..10}; do
-      meta=$(curl -x socks5://127.0.0.1:1080 -s https://speed.cloudflare.com/meta -m 5 | awk -F\" '{print $22}')
-      echo "$(date) $meta"
-      if [[ "$meta" != "$1" ]]
-      then
-        systemctl restart sing-box
-        sleep 2
-      else
-        break
-      fi
-    done
-  ;;
   *)
-    echo "Usage: /etc/init.d/sing-box {start|stop}"
-    exit 1
+    for i in {1..10}; do
+      meta=$(curl -x socks5://127.0.0.1:1080 -s https://speed.cloudflare.com/meta -m 5 | awk -F\" '{print $22}')
+      echo "$(date) $meta"
+      if [[ "$meta" != "$1" ]]
+      then
+        systemctl restart sing-box
+        sleep 2
+      else
+        break
+      fi
+    done
   ;;
 esac
 exit 0
