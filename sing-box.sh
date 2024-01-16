@@ -2,7 +2,7 @@
 SING=$1
 
 install_packages() {
-  local packages=("cron" "htop" "nano" "wget" "curl" "systemctl")
+  local packages=("cron" "htop" "nano" "wget" "curl")
   local to_install=()
   for pkg in "${packages[@]}"; do
     if ! dpkg -l | grep -q "^ii  $pkg "; then
