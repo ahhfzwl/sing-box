@@ -19,7 +19,7 @@ install_packages() {
   fi
 }
 
-add() {
+install_sing-box() {
   mkdir /etc/sing-box
   echo "download /etc/sing-box/config.json"
   curl -Lso /etc/sing-box/config.json https://raw.sock.cf/ahhfzwl/sing-box/main/$CONFIG
@@ -45,7 +45,7 @@ add() {
   systemctl enable sing-box
 }
 
-del() {
+remove_sing-box() {
   echo "disable sing-box"
   systemctl disable sing-box
   echo "stop sing-box"
@@ -65,15 +65,15 @@ case $SING in
   add)
     CONFIG=config.json
     install_packages
-    add
+    install_sing-box
   ;;
   del)
-    del
+    remove_sing-box
   ;;
   warp)
     CONFIG=config-warp.json
     install_packages
-    add
+    install_sing-box
   ;;
   *)
     echo "add or del"
