@@ -1,18 +1,21 @@
 #!/bin/bash
 SING=$1
-CONFIG=config.json
-apk() {
-  APK=
-  for i in systemctl htop nano wget curl
-  do
-    if [ -z `type -P $i` ]; then
-      APK="$APK $i"
+
+install_packages() {
+  local packages=("cron" "htop" "nano" "wget" "curl" "systemctl")
+  local to_install=()
+  for pkg in "${packages[@]}"; do
+    if ! dpkg -l | grep -q "^ii  $pkg "; then
+      to_install+=("$pkg")
     fi
   done
-  if [ -z $APK ]; then
-    echo "APK OK"
+
+  if [ "${#to_install[@]}" -eq 0 ]; then
+    echo "所有软件包均已安装。"
   else
-    apt update && apt -y install $APK
+    local package_list="${to_install[*]}"
+    echo "安装软件包: $package_list"
+    apt update && apt -y install $package_list
   fi
 }
 
@@ -60,7 +63,8 @@ del() {
 
 case $SING in
   add)
-    apk
+    CONFIG=config.json
+    install_packages
     add
   ;;
   del)
@@ -68,7 +72,7 @@ case $SING in
   ;;
   warp)
     CONFIG=config-warp.json
-    apk
+    install_packages
     add
   ;;
   *)
