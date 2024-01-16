@@ -1,16 +1,16 @@
 安装：
 
-bash <(curl -Ls https://raw.sock.cf/ahhfzwl/sing-box/main/install.sh) add
+bash <(curl -Ls https://raw.sock.cf/ahhfzwl/sing-box/main/sing-box.sh) add
 
 
-改端口：
+修改端口：
 
 sed -i '6s/8080/30501/' /etc/sing-box/config.json && systemctl restart sing-box
 
 
 卸载：
 
-bash <(curl -Ls https://raw.sock.cf/ahhfzwl/sing-box/main/install.sh) del
+bash <(curl -Ls https://raw.sock.cf/ahhfzwl/sing-box/main/sing-box.sh) del
 
 
 WARP账户：
