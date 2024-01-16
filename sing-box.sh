@@ -20,6 +20,7 @@ install_packages() {
 }
 
 install_sing-box() {
+  mkdir /etc/sing-box
   echo "download /etc/sing-box/config.json"
   wget -O /etc/sing-box/config.json https://raw.sock.cf/ahhfzwl/sing-box/main/$CONFIG
   echo "download /etc/sing-box/sock.cf.car"
