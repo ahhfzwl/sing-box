@@ -8,11 +8,6 @@ bash <(curl -Ls https://raw.sock.cf/ahhfzwl/sing-box/main/sing-box.sh) del
 bash <(curl -Ls https://raw.sock.cf/ahhfzwl/sing-box/main/sing-box.sh) add
 
 
-# 修改端口：
-
-sed -i '6s/8080/30501/' /etc/sing-box/config.json && systemctl restart sing-box
-
-
 # WARP账户：
 
 https://fscarmen.cloudflare.now.cc/
