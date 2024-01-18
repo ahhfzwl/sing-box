@@ -20,12 +20,14 @@ https://fscarmen.cloudflare.now.cc/
 
 # 下载sing-box最新版：
 
-mkdir /etc/sing-box && curl -o /etc/sing-box/config.json https://raw.sock.cf/ahhfzwl/sing-box/main/config.json
-
-wget https://github.com/SagerNet/sing-box/releases/latest/download/$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases | grep -oP "sing-box-\d+\.\d+\.\d+-linux-$(dpkg --print-architecture)"| sort -Vru | head -n 1).tar.gz
+wget https://github.com/SagerNet/sing-box/releases/download/v1.8.2/sing-box-1.8.2-linux-arm64.tar.gz
 
 tar -zxvf sing-box-*
 
 mv ./sing-box-*/sing-box /usr/local/bin/
+
+rm -rf sing-box-*
+
+mkdir /etc/sing-box && wget -O /etc/sing-box/config.json https://raw.sock.cf/ahhfzwl/sing-box/main/config.json
 
 sing-box run -c /etc/sing-box/config.jaon
