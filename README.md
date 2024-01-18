@@ -1,9 +1,9 @@
-# 卸载：
+# 卸载(ubuntu)：
 
 bash <(curl -Ls https://raw.sock.cf/ahhfzwl/sing-box/main/sing-box.sh) del
 
 
-# 安装：
+# 安装(ubuntu)：
 
 bash <(curl -Ls https://raw.sock.cf/ahhfzwl/sing-box/main/sing-box.sh) add
 
