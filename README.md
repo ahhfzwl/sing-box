@@ -15,8 +15,7 @@ https://fscarmen.cloudflare.now.cc/
 
 # 手动安装sing-box：
 
-wget https://github.com/SagerNet/sing-box/releases/download/v1.8.2/sing-box-1.8.2-linux-arm64.tar.gz
-
+wget -P /tmp/ "$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest | grep -o "https://github.com/SagerNet/sing-box/releases/download/.*/sing-box-.*-linux-$(uname -m | sed 's/x86_64/amd64/; s/armv.*/arm/').tar.gz" | sort -V | head -n 1)"
 tar -zxvf sing-box-*
 
 mv ./sing-box-*/sing-box /usr/local/bin/
