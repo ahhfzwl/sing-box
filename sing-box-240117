@@ -12,8 +12,6 @@
 case "$1" in
   start)
     setsid /usr/local/bin/sing-box run -c /etc/sing-box/config.json > /dev/null 2>&1 &
-    sleep 1
-    echo "$(date) $(curl -x socks5://127.0.0.1:1080 -s https://speed.cloudflare.com/meta -m 5 | awk -F\" '{print $22}')"
   ;;
   stop)
     kill -9 $(pidof /usr/local/bin/sing-box)
@@ -22,8 +20,6 @@ case "$1" in
     kill -9 $(pidof /usr/local/bin/sing-box)
     sleep 1
     setsid /usr/local/bin/sing-box run -c /etc/sing-box/config.json > /dev/null 2>&1 &
-    sleep 1
-    echo "$(date) $(curl -x socks5://127.0.0.1:1080 -s https://speed.cloudflare.com/meta -m 5 | awk -F\" '{print $22}')"
   ;;
   status)
     echo "$(date) $(curl -x socks5://127.0.0.1:1080 -s https://speed.cloudflare.com/meta -m 5 | awk -F\" '{print $22}')"
