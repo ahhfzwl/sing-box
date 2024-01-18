@@ -18,7 +18,7 @@ sed -i '6s/8080/30501/' /etc/sing-box/config.json && systemctl restart sing-box
 https://fscarmen.cloudflare.now.cc/
 
 
-# 下载sing-box最新版：
+# 手动安装sing-box：
 
 wget https://github.com/SagerNet/sing-box/releases/download/v1.8.2/sing-box-1.8.2-linux-arm64.tar.gz
 
