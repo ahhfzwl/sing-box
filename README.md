@@ -31,3 +31,4 @@ rm -rf sing-box-*
 mkdir /etc/sing-box && wget -O /etc/sing-box/config.json https://raw.sock.cf/ahhfzwl/sing-box/main/config.json
 
 sing-box run -c /etc/sing-box/config.jaon
+
