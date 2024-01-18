@@ -32,22 +32,21 @@ install_sing-box() {
   echo "download /etc/init.d/sing-box"
   wget -O /etc/init.d/sing-box https://raw.sock.cf/ahhfzwl/sing-box/main/sing-box
   chmod +x /etc/init.d/sing-box
-  wget -P /tmp/ https://github.com/SagerNet/sing-box/releases/latest/download/$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases | grep -oP "sing-box-\d+.\d+.\d+-linux-$(dpkg --print-architecture)"| sort -Vru | head -n 1).tar.gz
-  tar -zxvf /tmp/sing-box-* -C /tmp/
-  cp /tmp/sing-box-*/sing-box /usr/local/bin/sing-box
-  chmod +x /usr/local/bin/sing-box
-  rm -rf /tmp/sing-box-*
+  wget "$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest | grep -o "https://github.com/SagerNet/sing-box/releases/download/.*/sing-box-.*-linux-$(uname -m | sed 's/x86_/amd/; s/aarch/arm/').tar.gz" | sort -V | head -n 1)"
+  tar -zxvf sing-box-*
+  mv ./sing-box-*/sing-box /usr/local/bin/
+  rm -rf sing-box-*
   systemctl daemon-reload
-  systemctl enable sing-box
   systemctl restart sing-box
+  systemctl enable sing-box
 }
 
 remove_sing-box() {
   echo "disable sing-box"
   systemctl disable sing-box
   echo "stop sing-box"
-  pkill sing-box
   systemctl stop sing-box
+  pkill sing-box
   echo "del /etc/systemd/system/sing-box.service"
   rm -rf /etc/systemd/system/sing-box.service
   echo "del /etc/sing-box"
@@ -56,6 +55,7 @@ remove_sing-box() {
   rm -rf /usr/local/bin/sing-box
   echo "del /etc/init.d/sing-box"
   rm -rf /etc/init.d/sing-box
+  systemctl daemon-reload
 }
 
 case $SING in
