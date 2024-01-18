@@ -30,4 +30,6 @@ rm -rf sing-box-*
 
 mkdir /etc/sing-box && wget -O /etc/sing-box/config.json https://raw.sock.cf/ahhfzwl/sing-box/main/config.json
 
+sed -i '6s/8080/8080/' /etc/sing-box/config.json
+
 setsid sing-box run -c /etc/sing-box/config.json > /dev/null 2>&1 &
