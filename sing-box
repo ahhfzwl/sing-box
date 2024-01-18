@@ -30,7 +30,9 @@ case "$1" in
       echo "$(date) $meta"
       if [[ "$meta" != "$1" ]]
       then
-        systemctl restart sing-box
+        kill -9 $(pidof /usr/local/bin/sing-box)
+        sleep 1
+        setsid /usr/local/bin/sing-box run -c /etc/sing-box/config.json > /dev/null 2>&1 &
         sleep 2
       else
         break
