@@ -1,11 +1,11 @@
 # 卸载(ubuntu)：
 
-bash <(curl -Ls https://raw.sock.cf/ahhfzwl/sing-box/main/sing-box.sh) del
+bash <(curl -Ls https://raw.by.now.cc/ahhfzwl/sing-box/main/sing-box.sh) del
 
 
 # 安装(ubuntu)：
 
-bash <(curl -Ls https://raw.sock.cf/ahhfzwl/sing-box/main/sing-box.sh) add
+bash <(curl -Ls https://raw.by.now.cc/ahhfzwl/sing-box/main/sing-box.sh) add
 
 
 # WARP账户：
@@ -23,9 +23,9 @@ mv ./sing-box-*/sing-box /usr/local/bin/
 
 rm -rf sing-box-*
 
-mkdir /etc/sing-box && wget -O /etc/sing-box/config.json https://raw.sock.cf/ahhfzwl/sing-box/main/config.json
+mkdir /etc/sing-box && wget -O /etc/sing-box/config.json https://raw.by.now.cc/ahhfzwl/sing-box/main/config.json
 
-wget -O /etc/init.d/sing-box https://raw.sock.cf/ahhfzwl/sing-box/main/sing-box && chmod +x /etc/init.d/sing-box
+wget -O /etc/init.d/sing-box https://raw.by.now.cc/ahhfzwl/sing-box/main/sing-box && chmod +x /etc/init.d/sing-box
 
 sed -i '6s/8080/8080/' /etc/sing-box/config.json
 
