@@ -22,15 +22,15 @@ install_packages() {
 install_sing-box() {
   mkdir /etc/sing-box
   echo "download /etc/sing-box/config.json"
-  wget -O /etc/sing-box/config.json https://raw.sock.cf/ahhfzwl/sing-box/main/$CONFIG
+  wget -O /etc/sing-box/config.json https://raw.by.now.cc/ahhfzwl/sing-box/main/$CONFIG
   echo "download /etc/sing-box/sock.cf.car"
-  wget -O /etc/sing-box/sock.cf.cer https://raw.sock.cf/ahhfzwl/sing-box/main/sock.cf.cer
+  wget -O /etc/sing-box/sock.cf.cer https://raw.by.now.cc/ahhfzwl/sing-box/main/sock.cf.cer
   echo "download /etc/sing-box/sock.cf.key"
-  wget -O /etc/sing-box/sock.cf.key https://raw.sock.cf/ahhfzwl/sing-box/main/sock.cf.key
+  wget -O /etc/sing-box/sock.cf.key https://raw.by.now.cc/ahhfzwl/sing-box/main/sock.cf.key
   echo "download /etc/systemd/system/sing-box.service"
-  wget -O /etc/systemd/system/sing-box.service https://raw.sock.cf/ahhfzwl/sing-box/main/sing-box.service
+  wget -O /etc/systemd/system/sing-box.service https://raw.by.now.cc/ahhfzwl/sing-box/main/sing-box.service
   echo "download /etc/init.d/sing-box"
-  wget -O /etc/init.d/sing-box https://raw.sock.cf/ahhfzwl/sing-box/main/sing-box
+  wget -O /etc/init.d/sing-box https://raw.by.now.cc/ahhfzwl/sing-box/main/sing-box
   chmod +x /etc/init.d/sing-box
   wget "$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest | grep -o "https://github.com/SagerNet/sing-box/releases/download/.*/sing-box-.*-linux-$(uname -m | sed 's/x86_/amd/; s/aarch/arm/').tar.gz" | sort -V | head -n 1)"
   tar -zxvf sing-box-*
