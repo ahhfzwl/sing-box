@@ -22,11 +22,11 @@
   },
   "route":{
     "geoip":{
-      "download_url":"https://github.sock.cf/SagerNet/sing-geoip/releases/latest/download/geoip.db",
+      "download_url":"https://github.com/SagerNet/sing-geoip/releases/latest/download/geoip.db",
       "download_detour":"wireguard"
     },
     "geosite":{
-      "download_url":"https://github.sock.cf/SagerNet/sing-geosite/releases/latest/download/geosite.db",
+      "download_url":"https://github.com/SagerNet/sing-geosite/releases/latest/download/geosite.db",
       "download_detour":"wireguard"
     },
     "rules":[
