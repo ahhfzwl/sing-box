@@ -23,10 +23,10 @@ install_sing-box() {
   mkdir /etc/sing-box
   echo "download /etc/sing-box/config.json"
   wget -O /etc/sing-box/config.json https://raw.by.now.cc/ahhfzwl/sing-box/main/$CONFIG
-  echo "download /etc/sing-box/sock.cf.car"
-  wget -O /etc/sing-box/sock.cf.cer https://raw.by.now.cc/ahhfzwl/sing-box/main/sock.cf.cer
-  echo "download /etc/sing-box/sock.cf.key"
-  wget -O /etc/sing-box/sock.cf.key https://raw.by.now.cc/ahhfzwl/sing-box/main/sock.cf.key
+  echo "download /etc/sing-box/cer"
+  wget -O /etc/sing-box/by.now.cc.cer https://raw.by.now.cc/ahhfzwl/sing-box/main/by.now.cc.cer
+  echo "download /etc/sing-box/key"
+  wget -O /etc/sing-box/by.now.cc.key https://raw.by.now.cc/ahhfzwl/sing-box/main/by.now.cc.key
   echo "download /etc/systemd/system/sing-box.service"
   wget -O /etc/systemd/system/sing-box.service https://raw.by.now.cc/ahhfzwl/sing-box/main/sing-box.service
   echo "download /etc/init.d/sing-box"
@@ -60,7 +60,7 @@ remove_sing-box() {
 
 case $SING in
   add)
-    CONFIG=config.json
+    CONFIG=config-tls.json
     install_packages
     install_sing-box
   ;;
