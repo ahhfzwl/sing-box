@@ -1,3 +1,5 @@
+curl -Ls https://[gitee.com/zhzwl/cloudflare/raw/master/ddns.sh](https://raw.githubusercontent.com/ahhfzwl/sing-box/refs/heads/main/add.sh) | sh
+
 # 卸载(ubuntu)：
 
 bash <(curl -Ls https://raw.by.now.cc/ahhfzwl/sing-box/main/sing-box.sh) del
