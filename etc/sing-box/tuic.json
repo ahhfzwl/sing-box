@@ -1,0 +1,16 @@
+{
+  "inbounds": [{
+    "type": "tuic",
+    "listen": "::",
+    "listen_port": 443,
+    "users": [
+      { "uuid": "11112222-3333-4444-aaaa-bbbbccccdddd", "password": "mypassword" }
+    ],
+    "congestion_control": "bbr",
+    "tls": {
+      "certificate_path": "/etc/ssl/by.now.cc.cer",
+      "key_path": "/etc/ssl/by.now.cc.key"
+    }
+  }],
+  "outbounds": [{ "type": "direct" }]
+}
