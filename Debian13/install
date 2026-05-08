@@ -1,5 +1,16 @@
+1. 创建配置目录
+mkdir -p /etc/sing-box
+把你的配置放进去：
+nano /etc/sing-box/config.json
+
+2. 确认二进制权限
+chmod +x /usr/local/bin/sing-box
+测试能否运行：
+/usr/local/bin/sing-box version
+
+3. 创建 systemd 服务
 nano /etc/systemd/system/sing-box.service
-```TXT
+写入：
 [Unit]
 Description=sing-box Service
 Documentation=https://sing-box.sagernet.org
@@ -20,4 +31,41 @@ LimitNOFILE=infinity
 
 [Install]
 WantedBy=multi-user.target
-```
+
+4. 重新加载 systemd
+systemctl daemon-reload
+
+5. 设置开机自启
+systemctl enable sing-box
+
+6. 启动
+systemctl start sing-box
+
+7. 查看状态
+systemctl status sing-box
+
+实时日志：
+
+journalctl -u sing-box -f
+8. 常用命令
+
+重启：
+
+systemctl restart sing-box
+
+停止：
+
+systemctl stop sing-box
+
+关闭开机自启：
+
+systemctl disable sing-box
+9. 验证是否成功开机启动
+
+重启系统：
+
+reboot
+
+开机后检查：
+
+systemctl status sing-box
