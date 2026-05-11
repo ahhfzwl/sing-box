@@ -25,10 +25,6 @@ mv ./sing-box-*/sing-box /usr/local/bin/
 
 rm -rf sing-box-*
 
-mkdir /etc/sing-box && wget -O /etc/sing-box/config.json https://raw.by.now.cc/ahhfzwl/sing-box/main/config.json
-
-wget -O /etc/init.d/sing-box https://raw.by.now.cc/ahhfzwl/sing-box/main/sing-box && chmod +x /etc/init.d/sing-box
-
-sed -i '6s/8080/8080/' /etc/sing-box/config.json
+mkdir /etc/sing-box
 
 setsid sing-box run -c /etc/sing-box/config.json > /dev/null 2>&1 &
