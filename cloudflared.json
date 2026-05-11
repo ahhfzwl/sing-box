@@ -8,9 +8,9 @@
       "type": "cloudflared",
       "tag": "cloudflared",
       "token": "<TOKEN>",
-      "ha_connections": 4,
-      "protocol": "quic",
-      "edge_ip_version": 4
+      "ha_connections": 0,
+      "protocol": "http2",
+      "edge_ip_version": 0
     },
     {
       "type": "vless",
