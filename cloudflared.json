@@ -6,7 +6,7 @@
   "inbounds": [
     {
       "type": "cloudflared",
-      "tag": "cf-tunnel",
+      "tag": "cloudflared",
       "token": "<TOKEN>",
       "ha_connections": 4,
       "protocol": "quic",
@@ -14,13 +14,13 @@
     },
     {
       "type": "vless",
-      "tag": "vless-ws-in",
-      "listen": "127.0.0.1",
-      "listen_port": 8080,
+      "tag": "vless",
+      "listen": "0.0.0.0",
+      "listen_port": 1080,
       "users": [
         {
           "name": "user",
-          "uuid": "bb3640fe-dfa5-46a0-87c5-666b5c6796cd"
+          "uuid": "11112222-3333-4444-aaaa-bbbbccccdddd"
         }
       ],
       "transport": {
@@ -38,7 +38,7 @@
   "route": {
     "rules": [
       {
-        "inbound": "vless-ws-in",
+        "inbound": "vless",
         "action": "route",
         "outbound": "direct"
       }
