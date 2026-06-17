@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/usr/local/bin/
+WorkingDirectory=/etc/sing-box/
 ExecStart=/usr/local/bin/sing-box run -c /etc/sing-box/config.json
 Restart=always
 
