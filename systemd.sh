@@ -4,8 +4,11 @@ Description=sing-box
 After=network.target
 
 [Service]
-ExecStart=/usr/local/bin/sing-box run -c /etc/sing-box/config.json
+Type=simple
+WorkingDirectory=/etc/sing-box/
+ExecStart=/usr/local/bin/sing-box run
 Restart=on-failure
+RestartSec=5
 
 [Install]
 WantedBy=multi-user.target
