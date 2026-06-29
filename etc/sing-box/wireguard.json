@@ -3,19 +3,8 @@
   "http_clients":[{"tag":"http-client-direct","domain_resolver": "direct-dns"}],
   "dns": {
     "servers": [
-      {
-        "type": "udp",
-        "tag": "warp-dns",
-        "server": "1.1.1.1",
-        "server_port": 53,
-        "detour": "warp-ep"
-      },
-      {
-        "type": "udp",
-        "tag": "direct-dns",
-        "server": "119.29.29.29",
-        "server_port": 53
-      }
+      {"type": "udp","tag": "warp-dns","server": "1.1.1.1","server_port": 53,"detour": "warp-ep"},
+      {"type": "udp","tag": "direct-dns","server": "119.29.29.29","server_port": 53}
     ],
     "final": "warp-dns",
     "strategy": "prefer_ipv4"
@@ -44,20 +33,8 @@
       ]
     }
   ],
-  "inbounds": [
-    {
-      "type": "mixed",
-      "tag": "mixed",
-      "listen": "0.0.0.0",
-      "listen_port": 1080
-    }
-  ],
-  "outbounds": [
-    {
-      "type": "direct",
-      "tag": "direct"
-    }
-  ],
+  "inbounds": [{"type": "mixed","tag": "mixed","listen": "::","listen_port": 1080}],
+  "outbounds": [{"type": "direct","tag": "direct"}],
   "route": {
     "default_http_client": "http-client-direct",
     "default_domain_resolver": "warp-dns",
