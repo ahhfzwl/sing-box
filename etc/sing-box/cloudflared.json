@@ -1,32 +1,13 @@
 {
-  "log": {
-    "level": "info",
-    "timestamp": true
-  },
+  "log": {"level": "info"},
   "inbounds": [
     {
       "type": "cloudflared",
       "tag": "cloudflared",
-      "token": "<TOKEN>",
+      "token": "eyJhIjoiODZkOTQwNGQ1OTZkNTk0MTFkY2UxNzcwYWIxOWEzYjIiLCJ0IjoiYTQ2YmRiMGQtYzgyMi00YmJmLWE5NTktYTEyMGY1OGQyODg0IiwicyI6Ik1UY3pNMlUzWlRNdFl6UTVZaTAwTVdKakxXSm1OalF0WmpReE9USmxOREE1WkdZeCJ9",
       "ha_connections": 0,
-      "protocol": "http2",
-      "edge_ip_version": 0
-    },
-    {
-      "type": "vless",
-      "tag": "vless",
-      "listen": "0.0.0.0",
-      "listen_port": 1080,
-      "users": [
-        {
-          "name": "user",
-          "uuid": "11112222-3333-4444-aaaa-bbbbccccdddd"
-        }
-      ],
-      "transport": {
-        "type": "ws",
-        "path": "/"
-      }
+      "protocol": "quic",
+      "edge_ip_version": 4
     }
   ],
   "outbounds": [
@@ -38,7 +19,7 @@
   "route": {
     "rules": [
       {
-        "inbound": "vless",
+        "inbound": "cloudflared",
         "action": "route",
         "outbound": "direct"
       }
