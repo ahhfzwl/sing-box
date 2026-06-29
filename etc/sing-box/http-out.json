@@ -1,0 +1,30 @@
+{
+  "log": {
+    "level": "info"
+  },
+  "inbounds": [
+    {
+      "type": "mixed",
+      "tag": "mixed",
+      "listen": "0.0.0.0",
+      "listen_port": 1080,
+      "set_system_proxy": false
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "http",
+      "tag": "proxy",
+      "server": "cloudnproxy.baidu.com",
+      "server_port": 443,
+      "headers": {"Host": "sptest.baidu.com","X-T5-Auth": "482857715","User-Agent": "okhttp/3.11.0 Dalvik/2.1.0 (Linux; Build/RKQ1.200826.002) baiduboxapp/11.0.5.12 (Baidu; P1 11)"}
+    },
+    {
+      "type": "direct",
+      "tag": "direct"
+    }
+  ],
+  "route": {
+    "final": "proxy"
+  }
+}
