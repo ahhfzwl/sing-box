@@ -1,0 +1,94 @@
+{
+  "log":{"level":"info"},
+  "http_clients":[{"tag":"http-client-direct","domain_resolver": "direct-dns"}],
+  "dns": {
+    "servers": [
+      {
+        "type": "udp",
+        "tag": "warp-dns",
+        "server": "1.1.1.1",
+        "server_port": 53,
+        "detour": "warp-ep"
+      },
+      {
+        "type": "udp",
+        "tag": "direct-dns",
+        "server": "119.29.29.29",
+        "server_port": 53
+      }
+    ],
+    "final": "warp-dns",
+    "strategy": "prefer_ipv4"
+  },
+  "endpoints": [
+    {
+      "type": "wireguard",
+      "tag": "warp-ep",
+      "mtu": 1280,
+      "address": [
+        "172.16.0.2/32",
+        "2606:4700:110:8b98:bc0a:eb5b:9973:5b6f/128"
+      ],
+      "private_key": "GJ8VNKVMoZZaX9q/MNprGLkjeWGpMjTONKlpJfu4hYg=",
+      "peers": [
+        {
+          "address": "188.114.97.79",
+          "port": 2408,
+          "public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+          "allowed_ips": [
+            "0.0.0.0/0",
+            "::/0"
+          ],
+          "reserved": [56, 172, 207]
+        }
+      ]
+    }
+  ],
+  "inbounds": [
+    {
+      "type": "mixed",
+      "tag": "mixed",
+      "listen": "0.0.0.0",
+      "listen_port": 1080
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "direct",
+      "tag": "direct"
+    }
+  ],
+  "route": {
+    "default_http_client": "http-client-direct",
+    "default_domain_resolver": "warp-dns",
+    "final": "warp-ep",
+    "rules": [
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      },
+      {
+        "rule_set": "geosite-cn",
+        "outbound": "direct"
+      },
+      {
+        "rule_set": "geoip-cn",
+        "outbound": "direct"
+      }
+    ],
+    "rule_set": [
+      {
+        "tag": "geosite-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.gh.registry.cyou/SagerNet/sing-geosite/rule-set/geosite-cn.srs"
+      },
+      {
+        "tag": "geoip-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.gh.registry.cyou/SagerNet/sing-geoip/rule-set/geoip-cn.srs"
+      }
+    ]
+  }
+}
