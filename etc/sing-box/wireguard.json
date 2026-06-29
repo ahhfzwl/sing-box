@@ -81,13 +81,13 @@
         "tag": "geosite-cn",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.gh.registry.cyou/SagerNet/sing-geosite/rule-set/geosite-cn.srs"
+        "url": "https://gh-proxy.org/https://raw.githubusercontent.com/SagerNet/sing-geosite/refs/heads/rule-set/geosite-cn.srs"
       },
       {
         "tag": "geoip-cn",
         "type": "remote",
         "format": "binary",
-        "url": "https://raw.gh.registry.cyou/SagerNet/sing-geoip/rule-set/geoip-cn.srs"
+        "url": "https://gh-proxy.org/https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs"
       }
     ]
   }
