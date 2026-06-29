@@ -3,7 +3,6 @@ Description=sing-box
 After=network.target
 
 [Service]
-Type=simple
 WorkingDirectory=/etc/sing-box/
 ExecStart=/usr/local/bin/sing-box run
 Restart=on-failure
