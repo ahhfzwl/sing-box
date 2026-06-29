@@ -1,16 +1,75 @@
 {
+  "log": {
+    "level": "info"
+  },
   "inbounds": [
     {
       "type": "mixed",
-      "tag": "mixed-in",
-      "listen": "0.0.0.0",
-      "listen_port": 1080
+      "tag": "mixed",
+      "listen": "::",
+      "listen_port": 1080,
+      "users": [{"username":"root","password":"1224"}]
+    },
+    {
+      "type": "vmess",
+      "tag": "vmess-in",
+      "listen": "::",
+      "listen_port": 2052,
+      "users": [{"name": "user","uuid": "11112222-3333-4444-aaaa-bbbbccccdddd"}],
+      "transport": {"type": "ws","path": "/vm"}
+    },
+    {
+      "type": "vless",
+      "tag": "vless-in",
+      "listen": "::",
+      "listen_port": 2082,
+      "users": [{"name": "user","uuid": "11112222-3333-4444-aaaa-bbbbccccdddd"}],
+      "transport": {"type": "ws","path": "/vl"}
     }
   ],
   "outbounds": [
     {
+      "type": "vless",
+      "tag": "vless-out",
+      "server": "162.159.44.255",
+      "server_port": 443,
+      "uuid": "11112222-3333-4444-aaaa-bbbbccccdddd",
+      "flow": "",
+      "tls": {"enabled": true,"server_name": "vl.de5.net"},
+      "transport": {"type": "ws","path": "/zj?ed=2560&s5=1:1@140.238.34.80:7777","headers": {"Host": "vl.de5.net"}}
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "shadowsocks-out",
+      "server": "162.159.44.255",
+      "server_port": 443,
+      "method": "none",
+      "password": "1!lI",
+      "plugin": "v2ray-plugin",
+      "plugin_opts": "mode=websocket;host=vl.de5.net;tls;path=/zj?ed=2560&ip=138.2.31.37;mux=0"
+    },
+    {
+      "type": "trojan",
+      "tag": "trojan-out",
+      "server": "162.159.44.255",
+      "server_port": 443,
+      "password": "1!lI",
+      "tls": {"enabled": true,"server_name": "vl.de5.net","utls": {"enabled": false}},
+      "transport": {"type": "ws","path": "/zj?ed=2560&s5=1:1@140.238.34.80:7777","headers": {"Host": "vl.de5.net"}}
+    },
+    {
+      "type": "http",
+      "tag": "http-out",
+      "server": "cloudnproxy.baidu.com",
+      "server_port": 443,
+      "headers": {"Host": "sptest.baidu.com","X-T5-Auth": "482857715","User-Agent": "okhttp/3.11.0 Dalvik/2.1.0 (Linux; Build/RKQ1.200826.002) baiduboxapp/11.0.5.12 (Baidu; P1 11)"}
+    },
+    {
       "type": "direct",
       "tag": "direct"
     }
-  ]
+  ],
+  "route": {
+    "final": "direct"
+  }
 }
