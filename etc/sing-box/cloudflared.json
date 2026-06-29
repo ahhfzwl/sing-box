@@ -4,7 +4,7 @@
     {
       "type": "cloudflared",
       "tag": "cloudflared",
-      "token": "eyJhIjoiODZkOTQwNGQ1OTZkNTk0MTFkY2UxNzcwYWIxOWEzYjIiLCJ0IjoiYTQ2YmRiMGQtYzgyMi00YmJmLWE5NTktYTEyMGY1OGQyODg0IiwicyI6Ik1UY3pNMlUzWlRNdFl6UTVZaTAwTVdKakxXSm1OalF0WmpReE9USmxOREE1WkdZeCJ9",
+      "token": "eyJhIjoiODZkOTQwNGQ1OTZkNTk0MTFkY2UxNzcwYWIxOWEzYjIiLCJ0IjoiNTIxMTE2MWMtNWRlNC00NzYwLThkY2ItZGI2MDM5NjYxZTA3IiwicyI6Ik5XZFlneHZWWGphVUJVMTRDT29pNDFCdlB4V25nY3BaTyt1b1hiSFUxUU09In0=",
       "ha_connections": 0,
       "protocol": "quic",
       "edge_ip_version": 4
