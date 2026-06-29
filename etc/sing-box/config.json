@@ -1,52 +1,103 @@
 {
-  "log": {
-    "level": "info"
+  "log":{"level":"info"},
+  "http_clients":[{"tag":"http-client","domain_resolver": "direct-dns","detour": "proxy"}],
+  "dns": {
+    "servers": [
+      {
+        "type": "https",
+        "tag": "proxy-dns",
+        "server": "8.8.8.8",
+        "server_port": 443,
+        "detour": "proxy"
+      },
+      {
+        "type": "https",
+        "tag": "direct-dns",
+        "server": "1.12.12.12",
+        "server_port": 443
+      }
+    ],
+    "final": "direct-dns",
+    "strategy": "prefer_ipv4"
   },
   "inbounds": [
+    {
+      "type": "cloudflared",
+      "tag": "cloudflared",
+      "token": "eyJhIjoiODZkOTQwNGQ1OTZkNTk0MTFkY2UxNzcwYWIxOWEzYjIiLNzMxZTJmIiwicyI6Ik1HWXlaV1kwWXpZdFltRmxPQzAwWm1SaExXSXpZV0V0WXpJNFpURXdZamt5TUdOaCJ9",
+      "ha_connections": 0,
+      "protocol": "quic",
+      "edge_ip_version": 4
+    },
     {
       "type": "mixed",
       "tag": "mixed",
       "listen": "::",
-      "listen_port": 1080,
-      "users": [{"username":"root","password":"1224"}]
-    },
-    {
-      "type": "vmess",
-      "tag": "vmess-in",
-      "listen": "::",
-      "listen_port": 2052,
-      "users": [{"name": "user","uuid": "11112222-3333-4444-aaaa-bbbbccccdddd"}],
-      "transport": {"type": "ws","path": "/vm"}
+      "listen_port": 1080
     },
     {
       "type": "vless",
-      "tag": "vless-in",
+      "tag": "vless",
       "listen": "::",
       "listen_port": 2082,
       "users": [{"name": "user","uuid": "11112222-3333-4444-aaaa-bbbbccccdddd"}],
       "transport": {"type": "ws","path": "/vl"}
     }
   ],
+  "endpoints": [
+    {
+      "type": "wireguard",
+      "tag": "warp-ep",
+      "mtu": 1280,
+      "address": [
+        "172.16.0.2/32",
+        "2606:4700:110:8b98:bc0a:eb5b:9973:5b6f/128"
+      ],
+      "private_key": "GJ8VNKVMoZZaX9q/MNprGLkjeWGpMjTONKlpJfu4hYg=",
+      "peers": [
+        {
+          "address": "188.114.97.79",
+          "port": 2408,
+          "public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+          "allowed_ips": [
+            "0.0.0.0/0",
+            "::/0"
+          ],
+          "reserved": [56, 172, 207]
+        }
+      ]
+    }
+  ],
   "outbounds": [
     {
       "type": "vless",
-      "tag": "vless-out",
-      "server": "162.159.44.255",
+      "tag": "proxy",
+      "server": "127.0.0.1",
+      "server_port": 8443,
+      "uuid": "11112222-3333-4444-aaaa-bbbbccccdddd",
+      "flow": "",
+      "tls": {"enabled": true,"server_name": "kix.by.now.cc"},
+      "transport": {"type": "ws","path": "/vl","headers": {"Host": "kix.by.now.cc"}}
+    },
+    {
+      "type": "vless",
+      "tag": "TURN",
+      "server": "23.129.140.33",
       "server_port": 443,
       "uuid": "11112222-3333-4444-aaaa-bbbbccccdddd",
       "flow": "",
-      "tls": {"enabled": true,"server_name": "vl.de5.net"},
-      "transport": {"type": "ws","path": "/zj?ed=2560&s5=1:1@140.238.34.80:7777","headers": {"Host": "vl.de5.net"}}
+      "tls": {"enabled": true,"server_name": "nvda.cc.cd"},
+      "transport": {"type": "ws","path": "/turn://156.226.105.236:3478?ed=2560","headers": {"Host": "jp.by.now.cc"}}
     },
     {
       "type": "shadowsocks",
       "tag": "shadowsocks-out",
-      "server": "162.159.44.255",
+      "server": "2605:52c0:2:47ba:2033:92ff:fe67:da88",
       "server_port": 443,
       "method": "none",
       "password": "1!lI",
       "plugin": "v2ray-plugin",
-      "plugin_opts": "mode=websocket;host=vl.de5.net;tls;path=/zj?ed=2560&ip=138.2.31.37;mux=0"
+      "plugin_opts": "mode=websocket;host=vl.de5.net;tls;path=/zj?ed=2560&ip=[2605:52c0:2:3ea5:be24:11ff:fe5d:ac50];mux=0"
     },
     {
       "type": "trojan",
@@ -55,7 +106,8 @@
       "server_port": 443,
       "password": "1!lI",
       "tls": {"enabled": true,"server_name": "vl.de5.net","utls": {"enabled": false}},
-      "transport": {"type": "ws","path": "/zj?ed=2560&s5=1:1@140.238.34.80:7777","headers": {"Host": "vl.de5.net"}}
+      "transport": {"type": "ws","path": "/zj?ed=2560&s5=1:1@140.238.34.80:7777","headers": {"Host": "vl.de5.net"}},
+      "detour": "http-out"
     },
     {
       "type": "http",
@@ -70,6 +122,36 @@
     }
   ],
   "route": {
-    "final": "direct"
+    "default_http_client": "http-client",
+    "default_domain_resolver": "direct-dns",
+    "final": "proxy",
+    "rules": [
+      {
+        "ip_is_private": true,
+        "outbound": "direct"
+      },
+      {
+        "rule_set": "geosite-cn",
+        "outbound": "direct"
+      },
+      {
+        "rule_set": "geoip-cn",
+        "outbound": "direct"
+      }
+    ],
+    "rule_set": [
+      {
+        "tag": "geosite-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geosite/rule-set/geosite-cn.srs"
+      },
+      {
+        "tag": "geoip-cn",
+        "type": "remote",
+        "format": "binary",
+        "url": "https://raw.githubusercontent.com/SagerNet/sing-geoip/rule-set/geoip-cn.srs"
+      }
+    ]
   }
 }
