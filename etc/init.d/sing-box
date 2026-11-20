@@ -1,31 +1,20 @@
 #!/bin/bash
-### BEGIN INIT INFO
-# Provides:          sing-box
-# Required-Start:    $all
-# Required-Stop:     
-# Default-Start:     2 3 4 5
-# Default-Stop:      0 1 6
-# Short-Description: 启动时启动 sing-box
-# Description:       启用 sing-box 提供的服务。
-### END INIT INFO
-
 DAEMON="/usr/local/bin/sing-box"
 CONFIG="/etc/sing-box/config.json"
+LOG="/var/log/sing-box.log"
 
 case "$1" in
   start)
-    setsid "$DAEMON" run -c "$CONFIG" > /dev/null 2>&1 &
+    mkdir -p "$(dirname "$LOG")"
+    setsid "$DAEMON" run -c "$CONFIG" >> "$LOG" 2>&1 &
     ;;
   stop)
-    pkill -f "$DAEMON"
+    pkill -x "$(basename "$DAEMON")"
     ;;
   restart)
-    "$0" stop
-    sleep 1
-    "$0" start
+    "$0" stop; sleep 1; "$0" start
     ;;
   status|*)
-    curl -x socks5://127.0.0.1:2088 -s https://speed.cloudflare.com/cdn-cgi/trace
+    [ -f "$LOG" ] && tail -n 50 -f "$LOG" || echo "暂无日志文件：$LOG"
     ;;
 esac
-exit 0
