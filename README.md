@@ -1,30 +1,5 @@
-curl -Ls https://raw.githubusercontent.com/ahhfzwl/sing-box/refs/heads/main/add.sh | sh
-
-# 卸载(ubuntu)：
-
-bash <(curl -Ls https://raw.by.now.cc/ahhfzwl/sing-box/main/sing-box.sh) del
-
-
-# 安装(ubuntu)：
-
-bash <(curl -Ls https://raw.by.now.cc/ahhfzwl/sing-box/main/sing-box.sh) add
-
-
-# WARP账户：
-
-https://fscarmen.cloudflare.now.cc/
-
-
-# 手动安装sing-box：
-
-wget "$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest | grep -o "https://github.com/SagerNet/sing-box/releases/download/.*/sing-box-.*-linux-$(uname -m | sed 's/x86_/amd/; s/aarch/arm/').tar.gz" | sort -V | head -n 1)"
-
-tar -zxvf sing-box-*
-
-mv ./sing-box-*/sing-box /usr/local/bin/
-
-rm -rf sing-box-*
-
-mkdir /etc/sing-box
-
-setsid sing-box run -c /etc/sing-box/config.json > /dev/null 2>&1 &
+```
+ARCH="amd64"
+VER=$(curl -s https://api.github.com/repos/SagerNet/sing-box/releases/latest | sed -nE 's/.*"tag_name":[[:space:]]*"v([^"]+)".*/\1/p' | head -n1)
+curl -f "https://833337.xyz/SagerNet/sing-box/releases/download/v${VER}/sing-box-${VER}-linux-${ARCH}.tar.gz" | tar -xz --strip-components=1 -C /usr/local/bin/ "sing-box-${VER}-linux-${ARCH}/sing-box"
+```
