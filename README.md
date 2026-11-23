@@ -9,7 +9,7 @@ sing-box version
 ```
 ### systemctl status sing-box
 ```
-cat > /etc/systemd/system/sing-box.service << "EOF"
+cat <<\EOF >/etc/systemd/system/sing-box.service
 [Unit]
 Description=sing-box
 After=network.target
