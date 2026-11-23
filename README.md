@@ -1,4 +1,4 @@
-### apt install -y ing-box
+### install
 ```bash
 ARCH=$(case "$(uname -m)" in x86_64|amd64) echo amd64;; aarch64|arm64) echo arm64;; *) uname -m;; esac)
 VER=$(curl -sI https://833337.xyz/SagerNet/sing-box/releases/latest | grep -i "^location:" | awk -F'/' '{print $NF}' | tr -d '\r' | sed 's/^v//')
@@ -7,7 +7,7 @@ tar -xzOf "sing-box-${VER}-linux-${ARCH}.tar.gz" "sing-box-${VER}-linux-${ARCH}/
 rm -f "sing-box-${VER}-linux-${ARCH}.tar.gz"
 sing-box version
 ```
-### systemctl status sing-box
+### systemd
 ```
 cat <<\EOF >/etc/systemd/system/sing-box.service
 [Unit]
@@ -23,9 +23,11 @@ RestartSec=5
 [Install]
 WantedBy=multi-user.target
 EOF
-systemctl daemon-reload && systemctl enable sing-box && systemctl start sing-box
+systemctl daemon-reload
+systemctl enable sing-box
+systemctl start sing-box
 ```
-### /etc/init.d/sing-box status
+### /etc/init.d
 ```
 cat <<'EOF' > /etc/init.d/sing-box
 #!/bin/bash
@@ -55,7 +57,7 @@ EOF
 
 chmod +x /etc/init.d/sing-box
 ```
-### supervisorctl -c /etc/supervisor/conf.d/supervisord.conf status sing-box
+### supervisord
 ```
 cat <<'EOF' >> /etc/supervisor/conf.d/supervisord.conf
 [program:sing-box]
@@ -63,5 +65,7 @@ command=/usr/local/bin/sing-box run -c /etc/sing-box/config.json
 stderr_logfile=/var/log/supervisor/sing-box.err.log
 stdout_logfile=/var/log/supervisor/sing-box.out.log
 EOF
-supervisorctl reread && supervisorctl update && supervisorctl status sing-box
+supervisorctl -c /etc/supervisor/conf.d/supervisord.conf reread
+supervisorctl -c /etc/supervisor/conf.d/supervisord.conf update
+supervisorctl -c /etc/supervisor/conf.d/supervisord.conf status sing-box
 ```
