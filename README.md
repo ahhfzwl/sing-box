@@ -8,15 +8,55 @@ rm -f "sing-box-${VER}-linux-${ARCH}.tar.gz"
 sing-box version
 ```
 systemctl status sing-box
-```bash
-curl -fsSL https://833337.xyz/_gh/raw/ahhfzwl/sing-box/main/etc/systemd/system/sing-box.service -o /etc/systemd/system/sing-box.service
+```
+cat > /etc/systemd/system/sing-box.service << "EOF"
+[Unit]
+Description=sing-box
+After=network.target
+
+[Service]
+WorkingDirectory=/etc/sing-box/
+ExecStart=/usr/local/bin/sing-box run
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+EOF
 systemctl daemon-reload && systemctl enable sing-box && systemctl start sing-box
 ```
 /etc/init.d/sing-box status
 ```
+#!/bin/bash
+DAEMON="/usr/local/bin/sing-box"
+CONFIG="/etc/sing-box/config.json"
+LOG="/var/log/sing-box.log"
+PID="/run/sing-box.pid"
 
+start() {
+  mkdir -p "$(dirname "$LOG")"
+  setsid "$DAEMON" run -c "$CONFIG" >> "$LOG" 2>&1 < /dev/null &
+  echo $! > "$PID"
+}
+
+stop() {
+  [ -f "$PID" ] && kill "$(cat "$PID")" 2>/dev/null
+  rm -f "$PID"
+}
+
+case "$1" in
+  start) start ;;
+  stop) stop ;;
+  restart) stop; sleep 1; start ;;
+  status|*) [ -f "$LOG" ] && tail -n 50 -f "$LOG" || echo "暂无日志文件：$LOG" ;;
+esac
 ```
 supervisorctl -c /etc/supervisor/conf.d/supervisord.conf status sing-box
 ```
-
+cat <<'EOF' > /etc/supervisor/conf.d/sing-box.conf
+[program:sing-box]
+command=/usr/local/bin/sing-box run -c /etc/sing-box/config.json
+stderr_logfile=/var/log/supervisor/sing-box.err.log
+stdout_logfile=/var/log/supervisor/sing-box.out.log
+EOF
 ```
