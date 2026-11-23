@@ -27,6 +27,7 @@ systemctl daemon-reload && systemctl enable sing-box && systemctl start sing-box
 ```
 ### /etc/init.d/sing-box status
 ```
+cat <<'EOF' > /etc/init.d/sing-box
 #!/bin/bash
 DAEMON="/usr/local/bin/sing-box"
 CONFIG="/etc/sing-box/config.json"
@@ -50,6 +51,9 @@ case "$1" in
   restart) stop; sleep 1; start ;;
   status|*) [ -f "$LOG" ] && tail -n 50 -f "$LOG" || echo "暂无日志文件：$LOG" ;;
 esac
+EOF
+
+chmod +x /etc/init.d/sing-box
 ```
 ### supervisorctl -c /etc/supervisor/conf.d/supervisord.conf status sing-box
 ```
