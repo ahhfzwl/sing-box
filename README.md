@@ -57,10 +57,11 @@ chmod +x /etc/init.d/sing-box
 ```
 ### supervisorctl -c /etc/supervisor/conf.d/supervisord.conf status sing-box
 ```
-cat <<'EOF' > /etc/supervisor/conf.d/sing-box.conf
+cat <<'EOF' >> /etc/supervisor/conf.d/supervisord.conf
 [program:sing-box]
 command=/usr/local/bin/sing-box run -c /etc/sing-box/config.json
 stderr_logfile=/var/log/supervisor/sing-box.err.log
 stdout_logfile=/var/log/supervisor/sing-box.out.log
 EOF
+supervisorctl reread && supervisorctl update && supervisorctl status sing-box
 ```
