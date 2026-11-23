@@ -4,6 +4,8 @@ VER=$(curl -sI https://github.com/SagerNet/sing-box/releases/latest | grep -i "^
 curl -LO "https://github.com/SagerNet/sing-box/releases/download/v${VER}/sing-box-${VER}-linux-${ARCH}.tar.gz"
 tar -xzOf "sing-box-${VER}-linux-${ARCH}.tar.gz" "sing-box-${VER}-linux-${ARCH}/sing-box" > /usr/local/bin/sing-box
 rm -f "sing-box-${VER}-linux-${ARCH}.tar.gz"
-sing-box version```
+sing-box version
+```
 systemctl
 ```https://raw.githubusercontent.com/ahhfzwl/sing-box/refs/heads/main/etc/systemd/system/sing-box.service
+```
