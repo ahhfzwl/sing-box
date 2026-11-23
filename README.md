@@ -9,5 +9,6 @@ sing-box version
 ```
 systemctl
 ```bash
-https://raw.githubusercontent.com/ahhfzwl/sing-box/refs/heads/main/etc/systemd/system/sing-box.service
+curl -fsSL https://raw.wrap.eu.org/ahhfzwl/sing-box/main/etc/systemd/system/sing-box.service -o /etc/systemd/system/sing-box.service
+systemctl daemon-reload && systemctl enable sing-box && systemctl start sing-box
 ```
