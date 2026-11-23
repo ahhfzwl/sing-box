@@ -1,4 +1,4 @@
-apt install -y ing-box
+###### apt install -y ing-box
 ```bash
 ARCH=$(case "$(uname -m)" in x86_64|amd64) echo amd64;; aarch64|arm64) echo arm64;; *) uname -m;; esac)
 VER=$(curl -sI https://833337.xyz/SagerNet/sing-box/releases/latest | grep -i "^location:" | awk -F'/' '{print $NF}' | tr -d '\r' | sed 's/^v//')
@@ -7,7 +7,7 @@ tar -xzOf "sing-box-${VER}-linux-${ARCH}.tar.gz" "sing-box-${VER}-linux-${ARCH}/
 rm -f "sing-box-${VER}-linux-${ARCH}.tar.gz"
 sing-box version
 ```
-systemctl status sing-box
+###### systemctl status sing-box
 ```
 cat > /etc/systemd/system/sing-box.service << "EOF"
 [Unit]
@@ -25,7 +25,7 @@ WantedBy=multi-user.target
 EOF
 systemctl daemon-reload && systemctl enable sing-box && systemctl start sing-box
 ```
-/etc/init.d/sing-box status
+###### /etc/init.d/sing-box status
 ```
 #!/bin/bash
 DAEMON="/usr/local/bin/sing-box"
@@ -51,7 +51,7 @@ case "$1" in
   status|*) [ -f "$LOG" ] && tail -n 50 -f "$LOG" || echo "暂无日志文件：$LOG" ;;
 esac
 ```
-supervisorctl -c /etc/supervisor/conf.d/supervisord.conf status sing-box
+###### supervisorctl -c /etc/supervisor/conf.d/supervisord.conf status sing-box
 ```
 cat <<'EOF' > /etc/supervisor/conf.d/sing-box.conf
 [program:sing-box]
