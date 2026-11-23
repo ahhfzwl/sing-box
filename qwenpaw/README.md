@@ -14,7 +14,7 @@ mkdir -p /etc/sing-box && cat << 'EOF' > /etc/sing-box/config.json
   "inbounds": [
     {
       "type": "cloudflared",
-      "token": "eyJhIjoiODZkOTQwNGQ1OTZkNTk0MTFkY2UxNzcwYWIxOWEzYjIiLCJ0I",
+      "token": "eyJhIjoiODZkOTQwNGQ1OTZkNTk0MTFkY2UxNzcwYWIxOW",
       "ha_connections": 0,
       "protocol": "quic",
       "edge_ip_version": 4
@@ -22,7 +22,7 @@ mkdir -p /etc/sing-box && cat << 'EOF' > /etc/sing-box/config.json
     {
       "type": "vless",
       "listen_port": 8880,
-      "users": [{"name": "user","uuid": "11112222-3333-4444-aaaa-bbbbccccdddd"}],
+      "users": [{"uuid": "11112222-3333-4444-aaaa-bbbbccccdddd"}],
       "transport": {"type": "ws","path": "/vl"}
     }
   ],
